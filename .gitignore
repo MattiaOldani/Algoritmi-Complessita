@@ -3,3 +3,6 @@
 
 # Dispense
 dispense-*.pdf
+
+# Python venv
+venv/
