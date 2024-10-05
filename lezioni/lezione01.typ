@@ -1,3 +1,6 @@
+#import "alias.typ": *
+
+
 = Lezione 01 [26/09]
 
 == Notazione
@@ -46,14 +49,6 @@ Indichiamo con $2^*$ l'insieme delle stringhe binarie, ma allora l'insieme $2^2^
 
 In questo corso vedremo una serie di algoritmi che useremo per risolvere dei problemi, ma cos'è un problema?
 
-#let sol(x) = {
-  let solop = math.class(
-    "unary",
-    $"Sol"$,
-  )
-  $solop_(#x)$
-}
-
 Un problema $Pi$ è formato da:
 - un insieme di input possibili $I_Pi subset.eq 2^*$;
 - un insieme di output possibili $O_Pi subset.eq 2^*$;
@@ -77,11 +72,11 @@ La *tesi di Church-Turing* afferma un risultato molto importante che però possi
 - tutte le macchine create e che saranno create sono equivalenti, ovvero quello che fai con una macchina lo fai anche con l'altra;
 - nessuna definizione di algoritmo può essere diversa da una macchina di Turing;
 - la famiglia dei problemi di decisione che si possono risolvere è uguale per tutte le macchine;
--  i linguaggi di programmazione sono Turing-completi, ovvero se ipotizziamo una memoria infinita allora è come avere una MdT.
+- i linguaggi di programmazione sono Turing-completi, ovvero se ipotizziamo una memoria infinita allora è come avere una MdT.
 
 Anche un computer quantistico è una MdT, come calcolo almeno, perché in tempo si ha la quantum supremacy.
 
-Un *algoritmo* $A$ per $Pi$ è una MdT tale che $ x in I_Pi arrow.long.squiggly #rect[A] arrow.long.squiggly y in O_Pi $ tale che $y in sol(Pi) (x)$, ovvero quello che mi restituisce l'algoritmo è sempre la risposta corretta.
+Un *algoritmo* $A$ per $Pi$ è una MdT tale che $ x in I_Pi arrow.long.squiggly #rect[A] arrow.long.squiggly y in O_Pi $ tale che $y in sol(Pi)(x)$, ovvero quello che mi restituisce l'algoritmo è sempre la risposta corretta.
 
 Ma tutti i problemi sono risolvibili? No, grazie Mereghetti.
 
