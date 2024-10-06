@@ -15,6 +15,12 @@
   fill: rgb("#eeffee"),
 ).with(numbering: none)
 
+#let lemma = thmbox(
+  "lemma",
+  "Lemma",
+  fill: rgb("#eeffee"),
+).with(numbering: none)
+
 #let definition = thmbox(
   "definizione",
   "Definizione",
