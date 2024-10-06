@@ -66,3 +66,7 @@
   )
   $rapprop_(#x)$
 }
+
+// Lezione03
+
+#let NPOC = $italic("NPO-C")$

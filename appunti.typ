@@ -1,9 +1,7 @@
 // Titolo e indice
 #import "template.typ": *
 
-#show: project.with(
-  title: "Algoritmi e complessità"
-)
+#show: project.with(title: "Algoritmi e complessità")
 
 #pagebreak()
 
@@ -13,3 +11,6 @@
 #pagebreak()
 
 #include "lezioni/lezione02.typ"
+#pagebreak()
+
+#include "lezioni/lezione03.typ"
