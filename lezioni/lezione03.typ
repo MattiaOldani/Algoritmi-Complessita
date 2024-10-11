@@ -12,7 +12,7 @@
 
 #let pseudocode-list = pseudocode-list.with(..settings)
 
-#import "theorems.typ": *
+#import "@local/typst-theorems:1.0.0": *
 #show: thmrules.with(qed-symbol: $square.filled$)
 
 
