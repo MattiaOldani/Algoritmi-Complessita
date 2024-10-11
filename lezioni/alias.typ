@@ -70,3 +70,9 @@
 // Lezione03
 
 #let NPOC = $italic("NPO-C")$
+
+// Lezione04
+
+#let task(n) = $over(square.filled, #n)$
+
+#let dist = "dist"
