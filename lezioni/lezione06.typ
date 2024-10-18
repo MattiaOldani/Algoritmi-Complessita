@@ -42,9 +42,7 @@ Notiamo che $M lt.eq abs(U) = n$, ma $H(M) lt.eq H(n)$ per monotonia di $H$ e qu
   Greedy Set Cover è una $O(log(n))$-approssimazione per Set Cover.
 ]
 
-/*
-CHIEDI A BOLDI: vediamo che questa approssimazione è tight (tightness). In effetti ci sono input sui quali GSC va molto male, ma riesco a fare meglio? No. Tightness costruisco input su cui l'algoritmo va male.
-*/
+Questo qui è un *algoritmo tight*: infatti, riusciremo a creare un input ad hoc che si avvicina al tasso di approssimazione a meno di un errore molto piccolo.
 
 #example()[
   Il nostro universo è formato da:
