@@ -76,3 +76,16 @@
 #let task(n) = $over(square.filled, #n)$
 
 #let dist = "dist"
+
+// Lezione 08
+
+#let LP = "LP"
+#let ILP = "ILP"
+
+#let rounding(x) = {
+  let roundop = math.class(
+    "unary",
+    "rounding",
+  )
+  $roundop(#x)$
+}
