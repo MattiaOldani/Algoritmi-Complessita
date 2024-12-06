@@ -3,7 +3,7 @@
 #import "@preview/ouset:0.2.0": *
 
 
-// Lezione01
+// Lezione 01
 
 #let sol(x) = {
   let solop = math.class(
@@ -13,7 +13,7 @@
   $solop_(#x)$
 }
 
-// Lezione02
+// Lezione 02
 
 #let over(base, simbolo) = $overset(base, simbolo)$
 
@@ -67,11 +67,11 @@
   $rapprop_(#x)$
 }
 
-// Lezione03
+// Lezione 03
 
 #let NPOC = $italic("NPO-C")$
 
-// Lezione04
+// Lezione 04
 
 #let task(n) = $over(square.filled, #n)$
 
@@ -88,4 +88,16 @@
     "rounding",
   )
   $roundop(#x)$
+}
+
+// Lezione 17
+
+#let PCP = $italic("PCP")$
+
+#let pcprq(r, q) = {
+  let pcprqop = math.class(
+    "unary",
+    "PCP",
+  )
+  $pcprqop[#r,#q]$
 }
