@@ -1,4 +1,11 @@
+// Setup
+
+#import "@preview/ouset:0.2.0": *
+
+
 // Alias
+
+#let over(base, top) = overset(base, top)
 
 #let sol(x) = {
   let solop = math.class(
@@ -56,3 +63,9 @@
   )
   $rapprop_(#x)$
 }
+
+#let NPOC = $italic("NPO-C")$
+
+#let task(n) = $over(square.filled, #n)$
+
+#let dist = "dist"
