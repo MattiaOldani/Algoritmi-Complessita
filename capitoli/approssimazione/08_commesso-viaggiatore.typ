@@ -64,7 +64,7 @@ Vediamo ora il lemma delle strette di mano: dato un gruppo di persone che si str
 
 Questo proprietà sono tipo delle Ramsey-type, ovvero teorie trovare per il meme che cercano la regolarità nel caos.
 
-== Algoritmo
+== Algoritmi
 
 Il problema del *commesso viaggiatore* (_travelling salesman problem_) è il seguente: abbiamo un insieme di città collegate da strade di una certa lunghezza e il commesso vuole partire da un punto (_casa sua_), passare per tutte le città una sola volta, tornare al punto di partenza e camminare il meno possibile.
 

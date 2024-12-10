@@ -20,7 +20,7 @@
 
 // Capitolo
 
-== Load Balancing
+= Load Balancing
 
 Usciamo fuori dai problemi in $PO$ e vediamo il problema del *Load Balancing*. Esso è definito da:
 - *input*::
@@ -42,8 +42,6 @@ Che problemi stanno in $NPO$? È difficile dare una definizione di non determini
 Se un problema in $NPOC$ fosse polinomiale allora il suo problema di decisione associato sarebbe polinomiale, e questo non può succedere.
 
 Vediamo un *algoritmo greedy*, una tecnica di soluzione che cerca di ottimizzare _"in modo miope"_, ovvero costruisce passo dopo passo la soluzione prendendo ogni volta la direzione che sembra ottima in quel momento.
-
-DA QUA
 
 #align(center)[
   #pseudocode-list(title: [Greedy Load Balancing])[

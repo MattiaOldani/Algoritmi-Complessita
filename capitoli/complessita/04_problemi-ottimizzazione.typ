@@ -8,7 +8,7 @@
 
 // Capitolo
 
-== Problemi di ottimizzazione
+= Problemi di ottimizzazione
 
 Durante questo corso non vedremo quasi mai problemi di decisione, ma ci occuperemo quasi interamente di *problemi di ottimizzazione*. Questi problemi sono un caso particolare dei problemi.
 
@@ -55,8 +55,6 @@ La classe di complessità che contiene i problemi di ottimizzazione $Pi$ risolvi
 ]
 
 Noi useremo spesso problemi che hanno problemi di decisione associati $NPC$. Ci sono dei problemi in $PO$? Certo: i problemi di programmazione lineare sono tutti problemi in $PO$.
-
-== Approssimazione
 
 Cosa si fa se, dato un problema di ottimizzazione, vediamo che il suo associato è NPC?
 

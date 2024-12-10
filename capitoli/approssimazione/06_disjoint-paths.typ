@@ -20,9 +20,9 @@
 
 // Capitolo
 
-= Disjoint Paths (cammini disgiunti)
+= Disjoint Paths
 
-Idea del problema: abbiamo grafo orientato con $k$ sorgenti $s_0, dots, s_(k-1)$ e altrettante destinazioni $t_0, dots, t_(k-1)$. Cerchiamo di creare il maggior numero di cammini $s_i arrow t_i$ passando per i lati al massimo una volta. In realtà noi useremo un parametro di congestione $c$ che ci permette di passare al massimo $c$ volte per un lato.
+Idea del problema: abbiamo grafo orientato con $k$ sorgenti $s_0, dots, s_(k-1)$ e altrettante destinazioni $t_0, dots, t_(k-1)$. Cerchiamo di creare il maggior numero di cammini $s_i arrow t_i$ passando per i lati al massimo una volta. In realtà noi useremo un parametro di congestione $c$ che ci permette di passare al massimo $c$ volte per un lato. Questo problema è anche detto problema dei *cammini disgiunti*.
 
 Diamo una definizione più formale di questo problema:
 - *input*:

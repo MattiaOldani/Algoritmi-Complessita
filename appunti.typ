@@ -5,45 +5,55 @@
 
 #pagebreak()
 
-// Lezioni
+// Teoria della complessità
 
-#include "lezioni/lezione01.typ"
+#parte("Teoria della complessità")
 #pagebreak()
 
-#include "lezioni/lezione02.typ"
+#include "capitoli/complessita/01_notazione.typ"
 #pagebreak()
 
-#include "lezioni/lezione03.typ"
+#include "capitoli/complessita/02_algoritmi-101.typ"
 #pagebreak()
 
-#include "lezioni/lezione04.typ"
+#include "capitoli/complessita/03_problemi-decisione.typ"
 #pagebreak()
 
-#include "lezioni/lezione05.typ"
+#include "capitoli/complessita/04_problemi-ottimizzazione.typ"
 #pagebreak()
 
-#include "lezioni/lezione06.typ"
+// Algoritmi di approssimazione
+
+#parte("Algoritmi di approssimazione")
 #pagebreak()
 
-#include "lezioni/lezione07.typ"
+#include "capitoli/approssimazione/01_max-matching.typ"
 #pagebreak()
 
-#include "lezioni/lezione08.typ"
+#include "capitoli/approssimazione/02_load-balancing.typ"
 #pagebreak()
 
-#include "lezioni/lezione09.typ"
+#include "capitoli/approssimazione/03_center-selection.typ"
 #pagebreak()
 
-#include "lezioni/lezione10.typ"
+#include "capitoli/approssimazione/04_set-cover.typ"
 #pagebreak()
 
-#include "lezioni/lezione11.typ"
+#include "capitoli/approssimazione/05_vertex-cover.typ"
 #pagebreak()
 
-#include "lezioni/lezione12.typ"
+#include "capitoli/approssimazione/06_disjoint-paths.typ"
 #pagebreak()
 
-#include "lezioni/lezione13.typ"
+#include "capitoli/approssimazione/07_vertex-cover-v2.typ"
+#pagebreak()
+
+#include "capitoli/approssimazione/08_commesso-viaggiatore.typ"
+#pagebreak()
+
+// Algoritmi probabilistici
+
+#parte("Algoritmi probabilistici")
 #pagebreak()
 
 #include "lezioni/lezione14.typ"
@@ -53,6 +63,11 @@
 #pagebreak()
 
 #include "lezioni/lezione16.typ"
+#pagebreak()
+
+// Teorema PCP e inapprossimabilità
+
+#parte("Teorema PCP e inapprossimabilità di problemi")
 #pagebreak()
 
 #include "lezioni/lezione17.typ"
