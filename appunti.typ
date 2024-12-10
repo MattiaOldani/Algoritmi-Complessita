@@ -51,6 +51,9 @@
 #include "capitoli/approssimazione/08_commesso-viaggiatore.typ"
 #pagebreak()
 
+#include "capitoli/approssimazione/09_2-load-balancing.typ"
+#pagebreak()
+
 // Algoritmi probabilistici
 
 #parte("Algoritmi probabilistici")
