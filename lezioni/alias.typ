@@ -101,3 +101,21 @@
   )
   $pcprqop[#r,#q]$
 }
+
+// Lezione 19
+
+#let rank(a) = {
+  let rankop = math.class(
+    "unary",
+    "rank",
+  )
+  $rankop(#a)$
+}
+
+#let select(a) = {
+  let selectop = math.class(
+    "unary",
+    "select",
+  )
+  $selectop(#a)$
+}
