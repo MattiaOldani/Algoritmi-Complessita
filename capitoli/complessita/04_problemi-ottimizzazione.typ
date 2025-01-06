@@ -82,9 +82,7 @@ Quali altri classi esistono in questo zoo della classi di ottimizzazione?
 
 #v(12pt)
 
-#figure(
-  image("assets/04_gerarchia.svg", width: 100%),
-)
+#figure(image("assets/04_gerarchia.svg", width: 100%))
 
 #v(12pt)
 
