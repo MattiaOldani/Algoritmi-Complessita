@@ -202,7 +202,7 @@ Questo algoritmo è un esempio di *inapprossimabilità* o di *algoritmo tight*, 
   Noi abbiamo un algoritmo $alpha$-approssimante per Center Selection con $alpha < 2$, che fa $ (S,k) arrow.long.squiggly "ALGORITMO" arrow.long.squiggly rho^* (S,k) lt.eq underbracket(rho(S,k), "risultato") lt.eq alpha rho^* (S,k) . $
 
   Sappiamo che la distanza migliore è $1$ o $2$, ma allora:
-  - se $rho^* = 1$ ottengo $1 lt.eq rho(S.k) lt.eq alpha$;
+  - se $rho^* = 1$ ottengo $1 lt.eq rho(S,k) lt.eq alpha$;
   - se $rho^* = 2$ ottengo $2 lt.eq rho(S,k) lt.eq 2 alpha$.
 
   Nel primo caso devo rispondere _SI_ al problema di Dominating Set, nel secondo caso devo rispondere _NO_.
