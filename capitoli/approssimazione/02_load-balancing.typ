@@ -23,13 +23,13 @@
 = Load Balancing
 
 Usciamo fuori dai problemi in $PO$ e vediamo il problema del *Load Balancing*. Esso è definito da:
-- *input*::
+- *input*:
   - $m > 0$ numero di macchine;
   - $n > 0$ numero di task;
   - $(t_i)_(i in n) > 0$ durate dei task;
 - *soluzione ammissibile*: funzione $ alpha : n arrow.long m $ che assegna ogni task ad una macchina. Il *carico* di una macchina $j$ è la quantità $ L_j = sum_(i bar.v alpha(i) = j) t_i . $ Il *carico generale* è $ L = max_j L_j ; $
 - *funzione obiettivo*: $L$;
-- *tipo*: $max$.
+- *tipo*: $min$.
 
 #theorem()[
   Load Balancing è $NPO$-completo.
@@ -56,7 +56,7 @@ Vediamo un *algoritmo greedy*, una tecnica di soluzione che cerca di ottimizzare
       + $i arrow.l arg min_(t in m) L_t$ (indice macchina con meno carico)
       + $A_i arrow.l A_i union {j}$
       + $L_i arrow.l L_i + t_j$
-    + *output* $alpha$ assegna ogni elemento di $A_i$ alla macchina $i$
+    + *output* $alpha$ assegna ogni elemento $j$ di $A_i$ alla macchina $i$
   ]
 ]
 
@@ -80,7 +80,7 @@ Il tempo d'esecuzione di questo algoritmo è $O(n m)$, ed è molto comodo perch�
   Sappiamo che $ L = L_(hat(i)) = underbracket(L_(hat(i)) - t_(hat(j)), lt.eq L^*) + underbracket(t_(hat(j)), lt.eq L^* "per" (2)) lt.eq 2L^* $ quindi $ frac(L, L^*) lt.eq 2 . #qedhere $
 ]
 
-L'algoritmo Greedy Load Balancing non è *tight*, ovvero posso costruire un input che si avvicini molto all'approssimazione alla quale appartiene il problema.
+L'algoritmo Greedy Load Balancing non è *tight*, ovvero posso costruire un input che si avvicini a piacere all'approssimazione del problema.
 
 #theorem()[
   $forall epsilon > 0$ esiste un input per Load Balancing tale che Greedy Load Balancing produce un output $ 2 - epsilon lt.eq frac(L,L^*) lt.eq 2 . $
@@ -120,7 +120,7 @@ Vediamo ora un algoritmo migliore per il Load Balancing.
 
   Sia $hat(i)$ l'indice della macchina con carico massimo, ovvero $L_(hat(i)) = L$. Se $hat(i)$ ha un compito solo, la soluzione è ottima.
 
-  Consideriamo allora $hat(i)$ con più di un compito: sia $hat(j)$ l'ultimo compito assegnato a quella macchina. So che $hat(j) gt.eq m$, perché le prime $m$ task le do ad ogni macchina $i$ distinta, allora $ L = L_(hat(i)) = underbracket(L_(hat(i)) - t_(hat(j)), lt.eq L^*) - underbracket(t_(hat(j)), lt.eq t_m lt.eq 1/2 L^*) lt.eq 3/2 L^* . $ Ma allora $ frac(L,L^*) lt.eq 3/2 . #qedhere $
+  Consideriamo allora $hat(i)$ con più di un compito: sia $hat(j)$ l'ultimo compito assegnato a quella macchina. So che $hat(j) gt.eq m$, perché le prime $m$ task le do ad ogni macchina $i$ distinta, allora $ L = L_(hat(i)) = underbracket(L_(hat(i)) - t_(hat(j)), lt.eq L^*) + underbracket(t_(hat(j)), lt.eq t_m lt.eq 1/2 L^*) lt.eq 3/2 L^* . $ Ma allora $ frac(L,L^*) lt.eq 3/2 . #qedhere $
 ]
 
 Graham nel $1969$ ha poi dimostrato che questo algoritmo è in realtà in $gAPX(4/3)$.
