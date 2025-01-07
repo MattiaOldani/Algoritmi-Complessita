@@ -66,7 +66,7 @@
 #include "capitoli/probabilistici/01_introduzione.typ"
 #pagebreak()
 
-#include "capitoli/probabilistici/02_min_cut.typ"
+#include "capitoli/probabilistici/02_min-cut.typ"
 #pagebreak()
 
 #include "lezioni/lezione15.typ"
