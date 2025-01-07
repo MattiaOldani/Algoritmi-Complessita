@@ -1,4 +1,6 @@
-#import "alias.typ": *
+// Setup
+
+#import "../alias.typ": *
 
 #import "@preview/lovelace:0.3.0": pseudocode-list
 
@@ -16,7 +18,9 @@
 #show: thmrules.with(qed-symbol: $square.filled$)
 
 
-= Lezione 16 [29/11]
+// Capitolo
+
+= MAX $E_k$-SAT [$k gt.eq 3$]
 
 #align(center)[
   #block(
@@ -28,15 +32,13 @@
   )
 ]
 
-== Problema MAX $E_k$-SAT [$k gt.eq 3$]
-
 Forse uno dei problemi più famosi del mondo nella sua versione di decisione, esso è definito da:
 - *input*: formula CNF in cui ogni clausola contiene esattamente $k$ letterali;
 - *soluzioni ammissibili*: assegnamenti di valori di verità alle variabili che compaiono nell'input;
 - *funzione obiettivo*: numero di clausole soddisfatte (_true_) dall'assegnamento;
 - *tipo*: $max$.
 
-Le *formule CNF* sono congiunzioni di _"pezzi"_ $ (P_1) and dots and (P_t) $ e ogni _"pezzo"_ $P_i$ è una disgiunzione di $k$ letterali $ (l_1 or dots or l_k) , $ che possiamo trovare positivi o negativi.
+Le *formule CNF* sono congiunzioni di _"pezzi"_ $ P_1 and dots and P_t $ e ogni _"pezzo"_ $P_i$ è una disgiunzione di $k$ letterali $ l_1 or dots or l_k , $ che possiamo trovare positivi o negativi.
 
 I pezzi sono le *clausole*, che contengono appunto i *letterali*.
 
@@ -94,7 +96,6 @@ Vediamo quindi un algoritmo probabilistico per questo problema.
       [*Non è una cosa a capocchia*],
     )
   ]
-
 
   Supponiamo di guardare la $j$-esima clausola, formata da $k$ variabili. Per avere questa clausola falsa, devo assegnare _VERO_ a tutte le variabili negative e _FALSO_ a tutte le variabili positive, visto che abbiamo una disgiunzione. Esiste quindi un solo modo per assegnare queste $k$ variabili per avere la clausola falsa. Le altre $n - k$ variabili le assegno a caso.
 
@@ -188,3 +189,31 @@ Gli insiemi $Delta_D$ contano quante clausole andremo a soddisfare con la scelta
 - abbiamo fatto vedere che possiamo trovare deterministicamente questo assegnamento.
 
 Siamo passati dal probabilistico al non-probabilistico, mantenendo sempre dei buoni bound sul numero di clausole soddisfatte.
+
+#align(center)[
+  #block(
+    fill: rgb("#9FFFFF"),
+    inset: 8pt,
+    radius: 4pt,
+
+    [*Vi racconto i miei patemi interiori, sono entrato in un trip magico per cercare dei tool di visualizzazione (_cit. Boldi_)*],
+  )
+]
+
+In statistica il valore atteso è praticamente inutile: una singola esecuzione di un algoritmo potrebbe essere molto sfortunata e darci un valore più piccolo del valore atteso che abbiamo calcolato teoricamente.
+
+Il fattore di approssimazione dell'algoritmo probabilistico sarebbe $ frac(t, frac(2^k - 1, 2^k)t) = frac(2^k, 2^k -1) $ ma è appunto un algoritmo probabilistico, quindi questo bound andrebbe calcolato con le probabilità.
+
+Tutto ciò è abbastanza sbatti, però noi abbiamo un algoritmo deterministico, ottenuto dalla re-randomizzazione.
+
+#align(center)[
+  #block(
+    fill: rgb("#9FFFFF"),
+    inset: 8pt,
+    radius: 4pt,
+
+    [*NOOOOO, DOVEVO REGISTRARE (_cit. Boldi_)*],
+  )
+]
+
+Ora che abbiamo un algoritmo deterministico, possiamo dire che il fattore di approssimazione è quello calcolato al passo precedente.

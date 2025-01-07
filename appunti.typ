@@ -72,7 +72,7 @@
 #include "capitoli/probabilistici/03_set-cover-v2.typ"
 #pagebreak()
 
-#include "lezioni/lezione16.typ"
+#include "capitoli/probabilistici/04_max-ek-sat.typ"
 #pagebreak()
 
 // Teorema PCP e inapprossimabilità
