@@ -20,7 +20,7 @@
 
 // Capitolo
 
-= Un PTAS per 2-LoadBalancing
+= PTAS per 2-LoadBalancing
 
 Ricordiamo cosa sono i $PTAS$: essi sono problemi che sono *approssimabili a meno di una qualunque costante*. In poche parole, dato un problema, posso scegliere una qualunque costante (_tasso di approssimazione_) tale che esiste un algoritmo che mi risolve il dato problema con il tasso di approssimazione scelto. Purtroppo, più il tasso di errore scelto è basso, più è esponenziale il tempo.
 
@@ -37,9 +37,9 @@ Vediamo l'algoritmo magico per questo problema.
 #align(center)[
   #pseudocode-list(title: [Algoritmo magico])[
     - *input*
-      - Insieme di task $t_0, dots, t_(n-1)$
-      - Macchine $M_0$ e $M_1$
-      - Tasso di approssimazione $epsilon > 0$ per ottenere una $(1 + epsilon)$-approssimazione
+      - insieme di task $t_0, dots, t_(n-1)$
+      - macchine $M_0$ e $M_1$
+      - tasso di approssimazione $epsilon > 0$ per ottenere una $(1 + epsilon)$-approssimazione
     + if $epsilon gt.eq 1$
       + Assegna tutti i task $t_i$ alla macchina $M_0$
       + Salta al punto $10$
