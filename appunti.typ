@@ -69,7 +69,7 @@
 #include "capitoli/probabilistici/02_min-cut.typ"
 #pagebreak()
 
-#include "lezioni/lezione15.typ"
+#include "capitoli/probabilistici/03_set-cover-v2.typ"
 #pagebreak()
 
 #include "lezioni/lezione16.typ"

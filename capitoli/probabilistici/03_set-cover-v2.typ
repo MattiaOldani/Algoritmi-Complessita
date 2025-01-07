@@ -1,4 +1,6 @@
-#import "alias.typ": *
+// Setup
+
+#import "../alias.typ": *
 
 #import "@preview/lovelace:0.3.0": pseudocode-list
 
@@ -16,7 +18,9 @@
 #show: thmrules.with(qed-symbol: $square.filled$)
 
 
-= Lezione 15 [28/11]
+// Capitolo
+
+= Set Cover, il ritorno
 
 #align(center)[
   #block(
@@ -38,28 +42,38 @@
   )
 ]
 
-== Risultati preliminari
+== Concetti preliminari
 
 Vediamo *cose*: introduciamo qualche risultato preliminare che però non dimostriamo.
 
-*Chain rule*: legge comodissima nella probabilità, essa afferma che $ P(E_1 and dots and E_n) = P(E_1) dot P(E_2 bar.v E_1) dot dots dot P(E_n bar.v E_1, dots, E_(n-1)) . $
+#definition([Chain rule])[
+  Legge comodissima nella probabilità, essa afferma che $ P(E_1 and dots and E_n) = P(E_1) dot P(E_2 bar.v E_1) dot dots dot P(E_n bar.v E_1, dots, E_(n-1)) . $
+]
 
-*Analisi1*: vale $ forall x > 1 quad 1/4 lt.eq (1 - 1/x)^x lt.eq 1/e . $
+#definition([Analisi 1])[
+  Vale $ forall x > 1 quad 1/4 lt.eq (1 - 1/x)^x lt.eq 1/e . $
+]
 
-*Analisi2*: vale $ forall x in [0,1] quad 1 - x lt.eq e^(-x) . $
+#definition([Analisi 2])[
+  Vale $ forall x in [0,1] quad 1 - x lt.eq e^(-x) . $
+]
 
-*Union bound*: legge comoda in molte dimostrazioni che faremo, essa afferma che $ P(union.big_i E_i) lt.eq sum_i P(E_i) . $ Questa legge afferma che la probabilità dell'unione non supera la somma delle singole probabilità, questo perché gli eventi potrebbero sovrapporsi e quindi essere contati più volte.
+#definition([Union bound])[
+  Legge comoda in molte dimostrazioni, essa afferma che $ P(union.big_i E_i) lt.eq sum_i P(E_i) . $ Questa legge afferma che la probabilità dell'unione non supera la somma delle singole probabilità, questo perché gli eventi potrebbero sovrapporsi e quindi essere contati più volte.
+]
 
-*Disuguaglianza di Markov*: date
-- $XX gt.eq 0$ variabile aleatoria non negativa con media finita e
-- $alpha > 0$ valore reale positivo
-vale $ P(XX gt.eq alpha) lt.eq frac(EE[XX], alpha) . $
+#definition([Disuguaglianza di Markov])[
+  Date
+  - $XX gt.eq 0$ variabile aleatoria non negativa con media finita e
+  - $alpha > 0$ valore reale positivo
+  vale $ P(XX gt.eq alpha) lt.eq frac(EE[XX], alpha) . $
+]
 
 Le disuguaglianze che hanno questa forma sono dette *leggi di concentrazione*, e sono molto comode perché ci indicano la probabilità che una variabile aleatoria si discosti da un valore considerando la media di quella variabile. Notiamo inoltre come questa relazione sia *indipendente* da come è distribuita la variabile $XX$.
 
 Ad esempio, se $alpha$ assume un valore molto grande, la probabilità di trovare $XX$ oltre quel valore è molto bassa: infatti, mi sto discostando molto dal valore atteso e ho probabilità bassa di trovare qualcosa oltre quel valore.
 
-== Set Cover
+== Algoritmo probabilistico
 
 Avevamo già visto Set Cover, e come *metafora* avevamo usato quella degli spazi pubblicitari o degli abbonamenti di Milano: vogliamo scegliere dei pacchetti per coprire tutto un insieme universo spendendo il meno possibile.
 
@@ -67,7 +81,7 @@ Definiamo nuovamente il problema in termini formali:
 - *input*:
   - $m > 0$ insiemi $S_0, dots, S_(m-1)$ tali che $union.big_(i in m) S_i = U$;
   - $m > 0$ pesi $w_0, dots, w_(m-1) in QQ^+$;
-- *soluzione ammissibile*: sottoinsieme di "abbonamenti" $I subset.eq m$ tale che $union.big_(i in I) S_i = U$;
+- *soluzione ammissibile*: sottoinsieme di abbonamenti $I subset.eq m$ tale che $union.big_(i in I) S_i = U$;
 - *funzione obiettivo*: $w = sum_(i in I) w_i$;
 - *tipo*: $min$.
 
@@ -109,7 +123,7 @@ Questo algoritmo è molto semplice: lancio _"tante volte"_ la moneta con probabi
 
 L'algoritmo di Karger era *GG* perché dava sempre una soluzione ammissibile (_visto che i tagli non sono soggetti a vincoli_) ma spesso dava anche l'ottimo.
 
-Qua abbiamo una $P > 0$ di restituire soluzioni non ammissibili, e, se per puro caso abbiamo una soluzione ammissibile, non sempre sarà ottima, ma menomale lo sarà con bassa probabilità.
+Qua abbiamo una $P > 0$ di restituire soluzioni non ammissibili, e, se per puro caso abbiamo una soluzione ammissibile, non sempre sarà ottima, ma menomale non lo sarà con bassa probabilità.
 
 #theorem()[
   L'algoritmo ha le seguenti proprietà:
@@ -171,8 +185,6 @@ Come in tutti gli algoritmi probabilistici, più volte eseguo l'algoritmo e più
 
 #v(12pt)
 
-#figure(
-  image("assets/15_ronnie.jpg", width: 75%),
-)
+#figure(image("assets/03_ronnie.jpg", width: 75%))
 
 #v(12pt)
