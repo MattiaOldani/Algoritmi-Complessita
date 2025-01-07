@@ -55,6 +55,9 @@
 #include "capitoli/approssimazione/09_2-load-balancing.typ"
 #pagebreak()
 
+#include "capitoli/approssimazione/10_knapsack.typ"
+#pagebreak()
+
 // Algoritmi probabilistici
 
 #parte("Algoritmi probabilistici")
