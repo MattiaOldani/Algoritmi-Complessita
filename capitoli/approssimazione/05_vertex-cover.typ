@@ -40,15 +40,11 @@ Sembra il problema di Dominating Set ma ci sono differenze:
 
 // da rifare assolutamente, terribile
 #columns(2)[
-  #figure(
-    image("assets/05_ds.svg", width: 100%),
-  )
+  #figure(image("assets/05_ds.svg", width: 100%))
 
   #colbreak()
 
-  #figure(
-    image("assets/05_vc.svg", width: 100%),
-  )
+  #figure(image("assets/05_vc.svg", width: 100%))
 ]
 
 #v(12pt)
@@ -124,9 +120,7 @@ Data un pricing, esso è *stretto* sul vertice $i$ se e solo se $ sum_(e in E an
 
   #v(12pt)
 
-  #figure(
-    image("assets/05_esempio_vc_01.svg", width: 60%),
-  )
+  #figure(image("assets/05_esempio_vc_01.svg", width: 60%))
 
   #v(12pt)
 
@@ -134,9 +128,7 @@ Data un pricing, esso è *stretto* sul vertice $i$ se e solo se $ sum_(e in E an
 
   #v(12pt)
 
-  #figure(
-    image("assets/05_esempio_vc_02.svg", width: 60%),
-  )
+  #figure(image("assets/05_esempio_vc_02.svg", width: 60%))
 
   #v(12pt)
 
@@ -144,9 +136,7 @@ Data un pricing, esso è *stretto* sul vertice $i$ se e solo se $ sum_(e in E an
 
   #v(12pt)
 
-  #figure(
-    image("assets/05_esempio_vc_03.svg", width: 60%),
-  )
+  #figure(image("assets/05_esempio_vc_03.svg", width: 60%))
 
   #v(12pt)
 
@@ -154,9 +144,7 @@ Data un pricing, esso è *stretto* sul vertice $i$ se e solo se $ sum_(e in E an
 
   #v(12pt)
 
-  #figure(
-    image("assets/05_esempio_vc_04.svg", width: 60%),
-  )
+  #figure(image("assets/05_esempio_vc_04.svg", width: 60%))
 
   #v(12pt)
 
@@ -184,7 +172,7 @@ L'algoritmo che abbiamo visto non vuole avere lati con entrambi i vertici incide
 ]
 
 #proof()[
-  Noi paghiamo $ w = sum_(i in V_"out") w_i $ ma in output ho tutti i vertici non stretti sul pricing, quindi $ w = sum_(i in V bar.v p_e "non" \ "è stretto su" i) w_i $ ma il costo $w_i$ è la somma di tutte le offerte dei lati incidenti, quindi $ w = sum_(i in V_"out") space sum_(e in E and i in e) p_e . $
+  Noi paghiamo $ w = sum_(i in V_"out") w_i $ ma il costo $w_i$ è la somma di tutte le offerte dei lati incidenti, quindi $ w = sum_(i in V_"out") space sum_(e in E and i in e) p_e . $
 
   Stiamo sommando per ogni vertice nell'output i lati a che incidono su di esso, ma questi compaiono al massimo due volte, ovvero se entrambi i vertici di un lato stanno nell'output, quindi $ w lt.eq 2 sum_(e in E) p_e . qedhere $
 ]
