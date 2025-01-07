@@ -151,7 +151,7 @@ Vediamo due lemmi che saranno utili per calcolare l'approssimazione che fornisce
 ]
 
 #proof()[
-  Osserviamo che $delta(pi) = delta(T) + delta(M)$, ma per i due lemmi precedenti sappiamo che $ delta(pi) lt.eq_(l_1 + l_2) delta^* + 1/2 delta^* = 3/2 delta^* . $ Noi però diamo in output $over(pi,tilde)$. Per la disuguaglianza triangolare, visto che noi strozziamo quando passiamo al circuito hamiltoniano, abbiamo che $ delta(over(pi,tilde)) lt.eq delta(pi) lt.eq 3/2 delta^*, $ quindi $ frac(delta(over(pi,tilde)), delta^*) lt.eq 3/2 . qedhere $
+  Osserviamo che $delta(pi) = delta(T) + delta(M)$, ma per i due lemmi precedenti sappiamo che $ delta(pi) lt.eq_(l 1 + l 2) delta^* + 1/2 delta^* = 3/2 delta^* . $ Noi però diamo in output $over(pi,tilde)$. Per la disuguaglianza triangolare, visto che noi strozziamo quando passiamo al circuito hamiltoniano, abbiamo che $ delta(over(pi,tilde)) lt.eq delta(pi) lt.eq 3/2 delta^*, $ quindi $ frac(delta(over(pi,tilde)), delta^*) lt.eq 3/2 . qedhere $
 ]
 
 #theorem()[
@@ -167,9 +167,7 @@ Vediamo due lemmi che saranno utili per calcolare l'approssimazione che fornisce
 
   #v(12pt)
 
-  #figure(
-    image("assets/08_tight.svg", width: 75%),
-  )
+  #figure(image("assets/08_tight.svg", width: 75%))
 
   #v(12pt)
 
@@ -205,13 +203,13 @@ L'algoritmo di Christofides è di fine anni $'70$, ed è il migliore. Possiamo f
 ]
 
 #proof()[
-  Supponiamo per assurdo di avere un algoritmo $alpha$-approssimante per TSP.
+  Supponiamo per assurdo di avere un algoritmo $alpha$-approssimante per TSP, con $alpha > 1$.
 
   Dato un grafo $G = (V,E)$ vogliamo sapere se esso ha un CH. Trasformiamo $G$ in una istanza accettabile per TSP: per fare ciò dobbiamo rendere il grafo una cricca e dare dei pesi ad ogni lato. Creiamo quindi la cricca $ G' = (V, binom(V,2), d) $ con $ d(x,y) = cases(1 & "se" {x,y} in E, ceil(alpha n) + 1 quad & "altrimenti") . $
 
   Se $G$ aveva un CH allora $G'$ ne ha uno di lunghezza $ lt.eq n$. Se $G$ non ha un CH allora qualunque CH di $G'$ ha lunghezza $gt.eq ceil(alpha n) + 1$.
 
-  Calcolo il mio algoritmo $alpha$-approssimante per TSP sull'istanza $G'$. Se questo fosse un algoritmo esatto allora troverebbe il migliore CH, e guardando l'output (_la lunghezza del CH_) potrei dire se lo stesso CH era in $G$, quindi otterrei un assurdo.
+  Valuto il mio algoritmo $alpha$-approssimante per TSP sull'istanza $G'$. Se questo fosse un algoritmo esatto allora troverebbe il migliore CH, e guardando l'output (_la lunghezza del CH_) potrei dire se lo stesso CH era in $G$, quindi otterrei un assurdo.
 
   Questo purtroppo è un algoritmo approssimato, quindi abbiamo due casi:
   - se $G$ ha un CH allora in $G'$ ho un CH di lunghezza $n$, ma essendo un algoritmo approssimato mi viene restituito un CH un pelo più lungo ma comunque $lt.eq alpha n$;
