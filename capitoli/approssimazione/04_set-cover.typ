@@ -38,9 +38,7 @@ Diamo prima una definizione di *funzione armonica*: essa è la funzione $ H : NN
 
 #v(12pt)
 
-#figure(
-  image("assets/04_armonica.svg", width: 50%),
-)
+#figure(image("assets/04_armonica.svg", width: 50%))
 
 #v(12pt)
 
@@ -48,7 +46,7 @@ Vediamo due proprietà importanti di questa funzione.
 
 La prima proprietà ci dà un *upper bound* alla funzione armonica, ovvero $ H(n) lt.eq 1 + integral_1^n 1/x dif x = 1 + [ln(x)]_1^n = 1 + ln(n) - cancel(ln(1)) = 1 + ln(n) . $ Questa la possiamo capire dal grafico: tutta l'area tra i rettangoli e la funzione $1/x$ la andiamo a prendere nella maggiorazione.
 
-La seconda proprietà afferma che $ integral_t^(t+1) 1/x dif x lt.eq integral_t^(t+1) 1 dot 1/t dif x = 1/t integral_t^(t+1) 1 dif x = 1/t dot [x]_t^(t+1) = 1/t (t + 1 - t) = 1/t . $ Stiamo dando un altro upper bound: visto che $1/x$ è decrescente possiamo stimare la sua area tra $t$ e $t+1$ usando un rettangolo con altezza uguale all'altezza della funzione calcolata in $t$.
+La seconda proprietà afferma che $ integral_t^(t+1) 1/x dif x lt.eq 1 dot 1/t = 1/t . $ Stiamo dando un altro upper bound: visto che $1/x$ è decrescente possiamo stimare la sua area tra $t$ e $t+1$ usando un rettangolo con altezza uguale all'altezza della funzione calcolata in $t$.
 
 Questa proprietà ci dà un *lower bound* alla funzione armonica, ovvero $ H(n) = 1/1 + dots + 1/n gt.eq integral_1^2 1/x dif x + dots + integral_n^(n+1) 1/x dif x = integral_1^(n+1) 1/x dif x = ln(n+1) . $
 
@@ -91,7 +89,7 @@ Il valore $ frac(w_i, abs(S_i sect R)) $ è un *costo* che associamo ad ogni ins
 ]
 
 #proof()[
-  Il costo totale delle offerte scelte è $w = limits(sum)_(i in I) w_i$, ma $w_i$ è la somma di tutti i costi $c(s)$ associati ad ogni elemento di $s in S_i sect R$, quindi $ w = sum_(i in I) sum_(s in S_i sect R) c(s) = sum_(s in U) c(s) . $
+  Il costo totale delle offerte scelte è $w = limits(sum)_(i in I) w_i$, ma $w_i$ è la somma di tutti i costi $c(s)$ associati ad ogni elemento di $s in S_i sect R$, quindi $ w = sum_(i in I) sum_(s in S_i sect R) c(s) = sum_(s in U) c(s) . qedhere $
 ]
 
 #lemma()[
@@ -124,13 +122,13 @@ Il valore $ frac(w_i, abs(S_i sect R)) $ è un *costo* che associamo ad ogni ins
 
 L'approssimazione che ho non è esatta, ma dipende dall'input.
 
-Notiamo che $M lt.eq abs(U) = n$, ma $H(M) lt.eq H(n)$ per monotonia di $H$ e quindi $ H(M) lt.eq H(n) = O(log(n)) . $
+Notiamo che $abs(M) lt.eq abs(U) = n$, ma $H(M) lt.eq H(n)$ per monotonia di $H$ e quindi $ H(M) lt.eq H(n) = O(log(n)) . $
 
 #corollary()[
   Greedy Set Cover è una $O(log(n))$-approssimazione per Set Cover.
 ]
 
-Questo qui è un *algoritmo tight*: infatti, riusciremo a creare un input ad hoc che si avvicina al tasso di approssimazione a meno di un errore molto piccolo.
+Questo qui non è un *algoritmo tight*: infatti, riusciremo a creare un input ad hoc che si avvicina al tasso di approssimazione a meno di un errore molto piccolo.
 
 #example()[
   Il nostro universo è formato da:
@@ -142,9 +140,7 @@ Questo qui è un *algoritmo tight*: infatti, riusciremo a creare un input ad hoc
 
   #v(12pt)
 
-  #figure(
-    image("assets/04_esempio_sc.svg", width: 75%),
-  )
+  #figure(image("assets/04_esempio_sc.svg", width: 75%))
 
   #v(12pt)
 
