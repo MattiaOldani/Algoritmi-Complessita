@@ -91,9 +91,9 @@ Sia $w^*_(ILP)$ l'ottimo ottenuto nel problema ILP, e sia $w^*_(LP)$ l'ottimo ot
 #proof()[
   Dobbiamo controllare i due possibili valori di $overline(x)_i$.
 
-  Se $overline(x)_i = 0$ allora $ 0 lt.eq x_i^* < 0.5 arrow.long.double overline(x)_i = 0 lt.eq 2 x_i^* < 1 arrow.long.double overline(x)_i lt.eq 2 x_i^* . $
+  Se $overline(x)_i = 0$ allora $ 0 lt.eq x_i^* < 0.5 arrow.long.double^(*2) overline(x)_i = 0 lt.eq 2 x_i^* < 1 arrow.long.double overline(x)_i lt.eq 2 x_i^* . $
 
-  Se $overline(x)_i = 1$ allora $ x_i^* gt.eq 1/2 arrow.long.double 2 x_i^* gt.eq 1 = overline(x)_i arrow.long.double overline(x)_i lt.eq 2 x_i^* qedhere . $
+  Se $overline(x)_i = 1$ allora $ x_i^* gt.eq 0.5 arrow.long.double^(*2) 2 x_i^* gt.eq 1 = overline(x)_i arrow.long.double overline(x)_i lt.eq 2 x_i^* qedhere . $
 ]
 
 #lemma()[
@@ -101,7 +101,7 @@ Sia $w^*_(ILP)$ l'ottimo ottenuto nel problema ILP, e sia $w^*_(LP)$ l'ottimo ot
 ]
 
 #proof()[
-  Molto facile: $ w = sum_i w_i overline(x)_i lt.eq_3 2 sum_i w_i x_i^* = 2 w^*_("LP") . qedhere $
+  Molto facile: $ w = sum_i w_i overline(x)_i lt.eq_(l 3) 2 sum_i w_i x_i^* = 2 w^*_("LP") . qedhere $
 ]
 
 #theorem()[
@@ -109,7 +109,7 @@ Sia $w^*_(ILP)$ l'ottimo ottenuto nel problema ILP, e sia $w^*_(LP)$ l'ottimo ot
 ]
 
 #proof()[
-  Dopo quattro estenuanti lemmi possiamo affermare che $ frac(w, w^*_("ILP")) lt.eq_1 frac(w, w_("LP")) lt.eq_4 frac(2 w^*_("LP"), w^*_("LP")) = 2 . qedhere $
+  Dopo quattro estenuanti lemmi possiamo affermare che $ frac(w, w^*_("ILP")) lt.eq_1 frac(w, w^*_("LP")) lt.eq_4 frac(2 w^*_("LP"), w^*_("LP")) = 2 . qedhere $
 ]
 
 #align(center)[
