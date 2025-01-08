@@ -86,6 +86,9 @@
 #include "capitoli/pcp/02_max-ek-sat.typ"
 #pagebreak()
 
+#include "capitoli/pcp/03_max-independent-set.typ"
+#pagebreak()
+
 #include "lezioni/lezione19.typ"
 #pagebreak()
 
