@@ -80,3 +80,13 @@
   )
   $roundop(#x)$
 }
+
+#let PCP = $italic("PCP")$
+
+#let pcprq(r, q) = {
+  let pcprqop = math.class(
+    "unary",
+    "PCP",
+  )
+  $pcprqop[#r,#q]$
+}

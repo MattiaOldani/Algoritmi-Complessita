@@ -1,4 +1,6 @@
-#import "alias.typ": *
+// Setup
+
+#import "../alias.typ": *
 
 #import "@preview/diagraph:0.3.0": raw-render
 
@@ -18,39 +20,9 @@
 #show: thmrules.with(qed-symbol: $square.filled$)
 
 
-= Lezione 17 [05/12]
+// Capitolo
 
-== Ancora MAX $E_k$-SAT
-
-#align(center)[
-  #block(
-    fill: rgb("#9FFFFF"),
-    inset: 8pt,
-    radius: 4pt,
-
-    [*Vi racconto i miei patemi interiori, sono entrato in un trip magico per cercare dei tool di visualizzazione (_cit. Boldi_)*],
-  )
-]
-
-In statistica il valore atteso è praticamente inutile: una singola esecuzione di un algoritmo potrebbe essere molto sfortunata e darci un valore più piccolo del valore atteso che abbiamo calcolato teoricamente.
-
-Il fattore di approssimazione dell'algoritmo probabilistico sarebbe $ frac(t, frac(2^k - 1, 2^k)t) = frac(2^k, 2^k -1) $ ma è appunto un algoritmo probabilistico, quindi questo bound andrebbe calcolato con le probabilità.
-
-Tutto ciò è abbastanza sbatti, però noi abbiamo un algoritmo deterministico, ottenuto dalla re-randomizzazione.
-
-#align(center)[
-  #block(
-    fill: rgb("#9FFFFF"),
-    inset: 8pt,
-    radius: 4pt,
-
-    [*NOOOOO, DOVEVO REGISTRARE (_cit. Boldi_)*],
-  )
-]
-
-Ora che abbiamo un algoritmo deterministico, possiamo dire che il fattore di approssimazione è quello calcolato al passo precedente.
-
-== Teorema PCP
+= Teorema PCP
 
 Iniziamo con un argomento *molto* (_enfasi sul molto_) divertente, il *teorema PCP*.
 
@@ -205,3 +177,18 @@ Per rimuovere l'adattività faccio subito all'oracolo tutte le richieste $overli
 ]
 
 Sto chiedendo tutte le query subito, poi faccio partire la computazione senza interrogare di nuovo l'oracolo. Ho sicuramente un costo, ovvero un aumento del numero di query, ma questo è comunque un numero che è costante.
+
+#set math.mat(delim: none)
+
+#example()[
+  Siano:
+  - $z = 10110110$;
+  - $r(abs(z)) = 2$;
+  - $R = 01$;
+  - $q=3$;
+  - $I = {i_3, i_15, i_27}$.
+
+  Estraggo i bit $w_3, w_15, w_27$. Ho quindi $2^3$ casi possibili: $ mat(w_3,w_15,w_27,; 0,0,0,N; 0,0,1,S; 0,1,0,S; 0,1,1,N; 1,0,0,S; 1,0,1,S; 1,1,0,S; 1,1,1,N; augment: #(hline: 1, vline: 3)) $
+
+  Questa tabella esprime il comportamento che seguirà il verificatore dopo l'estrazione. Il comportamento espresso è un comportamento puramente deterministico.
+]

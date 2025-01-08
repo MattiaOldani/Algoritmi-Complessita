@@ -80,7 +80,7 @@
 #parte("Teorema PCP e inapprossimabilità di problemi")
 #pagebreak()
 
-#include "lezioni/lezione17.typ"
+#include "capitoli/pcp/01_teorema-PCP.typ"
 #pagebreak()
 
 #include "lezioni/lezione18.typ"
