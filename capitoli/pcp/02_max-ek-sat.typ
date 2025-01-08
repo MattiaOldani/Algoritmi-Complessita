@@ -1,4 +1,6 @@
-#import "alias.typ": *
+// Setup
+
+#import "../alias.typ": *
 
 #import "@preview/lovelace:0.3.0": pseudocode-list
 
@@ -16,33 +18,11 @@
 #show: thmrules.with(qed-symbol: $square.filled$)
 
 
-= Lezione 18 [06/12]
+// Capitolo
 
-== PCP e ancora MAX $E_k$-SAT
+= Inapprossimabilità di MAX $E_k$-SAT
 
-Riprendiamo un secondo in mano un verificatore non adattivo. Cosa vuol dire che un verificatore è non adattivo? Ho un linguaggio $ L in pcprq(r(n), q) $ e un verificatore $V$ non adattivo per $L$. Come funziona? Esso:
-- prende $z in 2^*$ come input;
-- estrae una stringa random $R in 2^(r(abs(z)))$ uniformemente a caso tra tutte quelle possibili;
-- sceglie delle posizioni $i_1^(z,R), dots, i_q^(z,R) in NN$;
-- interroga subito l'oracolo ottenendo i bit $b_1, dots, b_q in 2$;
-- da qua in poi va avanti in modo deterministico con $z, R, b_1, dots, b_q$ per avere _SI/NO_.
-
-#set math.mat(delim: none)
-
-#example()[
-  Siano:
-  - $z = 10110110$;
-  - $r(abs(z)) = 2$;
-  - $R = 01$;
-  - $q=3$;
-  - $I = {i_3, i_15, i_27}$.
-
-  Estraggo i bit $w_3, w_15, w_27$. Ho quindi $2^3$ casi possibili: $ mat(w_3,w_15,w_27,; 0,0,0,N; 0,0,1,S; 0,1,0,S; 0,1,1,N; 1,0,0,S; 1,0,1,S; 1,1,0,S; 1,1,1,N; augment: #(hline: 1, vline: 3)) $
-
-  Questa tabella esprime il comportamento che seguirà il verificatore dopo l'estrazione.
-]
-
-Vediamo un lemma che ci aiuterà nella mega dimostrazione successiva.
+Vediamo come PCP può aiutarci a dimostrare l'inapprossimabilità di alcuni problemi. Partiamo con MAX $E_k$-SAT, un problema che avevamo introdotto parlando di algoritmi probabilistici.
 
 #lemma()[
   Ogni $k$-CNF ($k gt.eq 3$) con $t$ clausole si può trasformare in una $3$-CNF con $(k-2)t$ clausole, preservando la soddisfacibilità.
@@ -74,7 +54,7 @@ Questo teorema ci dice che non possiamo avvicinarci a $1$ quanto vogliamo.
   Per ottenere una CNF prendo la tabella dipendente dalle variabili $w_i$ e, selezionando le righe dei _NO_, creo una CNF formata dalle variabili naturali se in quella riga sono false e dalle variabili negate se in quella riga sono vere.
 
   #example()[
-    Nell'unico esempio di questa lezione, la CNF risultante è $ Phi = (w_3 or w_15 or w_27) and (w_3 or not w_15 or not w_27) and (not w_3 or not w_15 or not w_27) . $
+    Nell'esempio della lezione scorsa, dove viene spiegato il PCP, la CNF risultante è $ Phi = (w_3 or w_15 or w_27) and (w_3 or not w_15 or not w_27) and (not w_3 or not w_15 or not w_27) . $
   ]
 
   La formula $Psi_(z,R)$ è una $q$-CNF con al massimo $2^q$ clausole. Trasformo $Psi_(z,R)$ in una $3$-CNF $phi_(z,R)$ con al massimo $q 2^q$ clausole, per il lemma precedente. Consideriamo, per semplicità, che abbia esattamente $q 2^q$.

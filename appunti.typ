@@ -83,7 +83,7 @@
 #include "capitoli/pcp/01_teorema-PCP.typ"
 #pagebreak()
 
-#include "lezioni/lezione18.typ"
+#include "capitoli/pcp/02_max-ek-sat.typ"
 #pagebreak()
 
 #include "lezioni/lezione19.typ"
