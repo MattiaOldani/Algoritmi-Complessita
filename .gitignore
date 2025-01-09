@@ -1,8 +1,5 @@
 # Spell checker
 .vscode/
 
-# Dispense
-dispense-*.pdf
-
 # Python venv
 venv/
