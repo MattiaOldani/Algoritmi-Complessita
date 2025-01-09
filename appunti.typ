@@ -100,4 +100,4 @@
 #include "capitoli/succinte/02_rank-select.typ"
 #pagebreak()
 
-#include "lezioni/lezione21.typ"
+#include "capitoli/succinte/03_alberi-binari.typ"
