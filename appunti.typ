@@ -89,6 +89,14 @@
 #include "capitoli/pcp/03_max-independent-set.typ"
 #pagebreak()
 
+// Strutture succinte
+
+#parte("Strutture succinte")
+#pagebreak()
+
+#include "capitoli/succinte/01_introduzione.typ"
+#pagebreak()
+
 #include "lezioni/lezione19.typ"
 #pagebreak()
 
