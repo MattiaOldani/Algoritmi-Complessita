@@ -106,4 +106,4 @@
 #include "capitoli/succinte/04_elias-fano.typ"
 #pagebreak()
 
-#include "lezioni/lezione22.typ"
+#include "capitoli/succinte/05_hash-minimali-perfetti.typ"

@@ -1,4 +1,6 @@
-#import "alias.typ": *
+// Setup
+
+#import "../alias.typ": *
 
 #import "@preview/lovelace:0.3.0": pseudocode-list
 
@@ -16,7 +18,9 @@
 #show: thmrules.with(qed-symbol: $square.filled$)
 
 
-= Lezione 22 [20/12]
+// Capitolo
+
+= Hash minimali perfetti
 
 #align(center)[
   #block(
@@ -27,8 +31,6 @@
     [*Siamo al finale (_cit. Boldi_)*],
   )
 ]
-
-== Hash minimali perfetti
 
 Le funzioni hash sono molto rudimentali: partono da qualsiasi universo $U$ e ci tornano, a prescindere da $U$, un valore nell'insieme ${0,dots,m-1}$. In poche parole sono funzioni nella forma $ h : U arrow.long m . $
 
