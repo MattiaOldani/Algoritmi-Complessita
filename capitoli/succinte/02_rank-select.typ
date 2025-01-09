@@ -1,4 +1,6 @@
-#import "alias.typ": *
+// Setup
+
+#import "../alias.typ": *
 
 #import "@preview/lovelace:0.3.0": pseudocode-list
 
@@ -16,13 +18,53 @@
 #show: thmrules.with(qed-symbol: $square.filled$)
 
 
-= Lezione 20 [13/12]
+// Capitolo
 
-== Ancora Jacobson
+= Rank e Select
 
-La struttura di Jacobson è stata pensata negli anni $'80$.
+Vogliamo implementare l'ADT che definisce il comportamento *Rank e Select*.
 
-Le strutture che consideriamo sono *statiche*: le primitive non cambiano lo stato dell'oggetto, non modificano ciò che è stato salvato. Le strutture di controllo (_tabelle_) che usiamo sono detti *indici*. Il tempo di costruzione di questi indici non lo considereremo mai.
+Dato un array $b in 2^n$ di $n$ bit, abbiamo due operazioni:
+- la primitiva *rank* conta il numero di $1$ prima di una data posizione, ovvero $ rank(p) = abs({i bar.v i < p and b_i = 1}) ; $
+- la primitiva *select* dice in che posizione è presente il $k$-esimo $1$ (_a partire da $0$_), ovvero $ select(k) = max{p bar.v rank(p) lt.eq k} . $
+
+Valgono due *proprietà*: $ rank(select(i)) = i \ select(rank(i)) gt.eq i and select(rank(i)) = i arrow.long.double.l.r b_i = 1 $
+
+Le strutture che considereremo sono dette *statiche*: una volta costruito l'oggetto, esso non viene più modificato dalle primitive, quindi è buona cosa costruire in maniera intelligente queste strutture.
+
+Le strutture di controllo (_tabelle_) che usiamo sono detti *indici*. Il tempo di costruzione di questi indici non lo considereremo mai.
+
+Vediamo due implementazioni naive di questa ADT:
+- se non costruisco niente lo spazio utilizzato dalla struttura è $0$ ma il tempo è lineare perché ogni volta devo calcolarmi i valori di rank e select scorrendo l'array;
+- se costruisco le tabelle di rank e select per intero occupiamo $2 n log_2(n)$ bit di spazio ma abbiamo tempo di accesso $O(1)$ per avere le risposte.
+
+Per salvare un array di $n$ bit ci servono $ gt.eq log_2(D_n) = log_2(2^n) = n $ bit. Abbiamo $2^n$ perché sono bit e abbiamo $n$ posizioni.
+
+== Struttura di Jacobson per Rank
+
+La struttura di Jacobson è stata pensata negli anni $'80$. DA QUA GAY
+
+La struttura di Jacobson per rank è una *struttura multi-livello*.
+
+Dato l'array $b$ lo divido in *super-blocchi* di lunghezza $(log(n))^2$. Ogni super-blocco poi lo dividiamo in *blocchi* di lunghezza $1/2 log(n)$.
+
+Ogni super-blocco $S_i$ memorizza quanti $1$ sono contenuti in esso. Invece, ogni blocco $B_(i j)$ memorizza quanti $1$ ci sono dall'inizio del super blocco $S_i$ fino a se stesso (_escluso_).
+
+Vediamo l'occupazione in memoria di queste strutture.
+
+La *tabella dei super-blocchi* ha $frac(n, (log(n))^2)$ righe e contiene dei valori che sono al massimo lunghi (secondo me sono $(log(n)^2)$, e invece sono) $n$, che in bit sono $log(n)$. La grandezza di questa tabella è quindi $ frac(n, (log(n))^2) log(n) = frac(n, log(n)) = o(n) . $
+
+La *tabella dei blocchi* ha $frac(n, 1/2 log(n))$ righe e contiene dei valori che sono al massimo lunghi $(log(n))^2$, che in bit sono $log(log(n)^2)$. La grandezza di questa tabella è quindi $ frac(n, 1/2 log(n)) log(log(n)^2) = frac(4 n log(log(n)), log(n)) = o(n) . $
+
+Manca una cosa: cosa succede se ci viene chiesta una posizione interna al blocco?
+
+Usiamo il *four-russians trick*, il _trucco dei quattro russi_.
+
+Per ogni possibile configurazione dei blocchi, che sono $2^(1/2 log(n))$, memorizziamo la tabella di rank di quella configurazione. Abbiamo quindi $1/2 log(n)$ righe, che contengono valore massimo $1/2 log(n)$, che in bit sono $log(1/2 log(n))$. L'occupazione totale di tutte queste strutture è $ 2^(1/2 log(n)) 1/2 log(n) log(1/2 log(n)) = sqrt(n) log(sqrt(n)) log(log(sqrt(n))) = o(n) . $
+
+La struttura di Jacobson è quindi *succinta*.
+
+== Struttura di Clarke per Select
 
 #align(center)[
   #block(
@@ -34,8 +76,6 @@ Le strutture che consideriamo sono *statiche*: le primitive non cambiano lo stat
   )
 ]
 
-== Struttura succinta di Clarke per Select
-
 La *struttura di Clarke per Select* è stata ideata molto dopo rispetto alla struttura di Jacobson.
 
 Come funziona questa struttura? È ancora una *struttura multi-livello*, che salverà le entry della select _"ogni tanto"_, ogni tot multipli.
@@ -46,13 +86,13 @@ Il *primo livello* della struttura memorizza le select dei valori multipli di $l
 
 === Secondo livello
 
-Stiamo salvando delle posizioni $p_i$, ognuna delle quali indica la posizione dell'$i log(n) log(log(n))$-esimo bit $1$ del vettore. Ragioniamo su $p_(i+1)$ e $p_i$. La successione è necessariamente crescente, e inoltre la differenza non può essere più bassa del multiplo, perché di mezzo ho esattamente quel valore moltiplicativo. Quindi $ p_(i+1) - p_i gt.eq log(n) log(log(n)) . $ Questa differenza ci dice quanto sono sparsi i nostri $1$ nel blocco. Se ho l'uguale allora ho solo $1$, altrimenti ne ho di meno. In poche parole, questo valore indica la *densità* degli $1$.
+Stiamo salvando delle posizioni $p_i$, ognuna delle quali indica la posizione dell'$[i log(n) log(log(n))]$-esimo bit $1$ del vettore. Ragioniamo su $p_(i+1)$ e $p_i$. La successione è necessariamente crescente, e inoltre la differenza non può essere più bassa del multiplo, perché di mezzo ho esattamente quel valore moltiplicativo. Quindi $ p_(i+1) - p_i gt.eq log(n) log(log(n)) . $ Questa differenza ci dice quanto sono sparsi i nostri $1$ nel blocco. Se ho l'uguale allora ho solo $1$, altrimenti ne ho di meno. In poche parole, questo valore indica la *densità* degli $1$.
 
 Il *secondo livello* dipende dalla densità $r_i = p_(i+1) - p_i$. Ho due casi da considerare:
 - se $r_i gt.eq (log(n) log(log(n)))^2$ ho una densità bassa di $1$, si dice che il vettore in quello span è *sparso*. La tabella della select viene memorizzata esplicitamente. Quanto occupiamo in memoria? Gli $1$ da memorizzare sono quelli tra un pezzo e l'altro, quindi $log(n) log(log(n))$ righe. La posizione che scrivo dentro è al massimo $r_i$ (_l'indice dell'$1$ parte dall'inizio del blocco_), quindi $log(r_i)$ in bit. Come spazio totale otteniamo $ log(n)log(log(n)) log(r_i) = frac((log(n) log(log(n)))^2, log(n) log(log(n))) log(r_i) lt.eq frac(r_i log(r_i), log(n) log(log(n))) lt.eq_(r_i lt.eq n) frac(r_i, log(log(n))) ; $
 - se $r_i < (log(n) log(log(n)))^2$ ho una densità alta, si dice che il vettore in quello span è *denso*, ho tantissimi $1$. In questo caso memorizzo le posizioni multiple di $log(r_i) log(log(n))$. Quanta memoria serve? Sto usando $ frac(log(n) log(log(n)), log(r_i) log(log(n))) log(r_i) = log(n) lt.eq frac(r_i, log(log(n))) $ bit di memoria.
 
-In entrambi i casi analizzati usiamo al massimo, nel secondo livello, $ frac(r_i, log(log(n))) $ per ogni blocco, quindi $ frac(r_0, log(log(n))) + frac(r_1, log(log(n))) + dots &= frac(p_1 - p_0, log(log(n))) + frac(p_2 - p_1, log(log(n))) + dots = \ &= frac(p_n - p_0, log(log(n))) lt.eq frac(n, log(log(n))) = o(n) . $
+In entrambi i casi analizzati usiamo al massimo, nel secondo livello, un numero di bit uguale a $ frac(r_i, log(log(n))) $ per ogni blocco, quindi $ frac(r_0, log(log(n))) + frac(r_1, log(log(n))) + dots &= frac(p_1 - p_0, log(log(n))) + frac(p_2 - p_1, log(log(n))) + dots = \ &= frac(p_n - p_0, log(log(n))) lt.eq frac(n, log(log(n))) = o(n) . $
 
 === Terzo livello
 

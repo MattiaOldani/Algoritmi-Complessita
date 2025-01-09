@@ -97,10 +97,7 @@
 #include "capitoli/succinte/01_introduzione.typ"
 #pagebreak()
 
-#include "lezioni/lezione19.typ"
-#pagebreak()
-
-#include "lezioni/lezione20.typ"
+#include "capitoli/succinte/02_rank-select.typ"
 #pagebreak()
 
 #include "lezioni/lezione21.typ"
