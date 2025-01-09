@@ -101,3 +101,6 @@
 #pagebreak()
 
 #include "capitoli/succinte/03_alberi-binari.typ"
+#pagebreak()
+
+#include "capitoli/succinte/04_elias-fano.typ"
