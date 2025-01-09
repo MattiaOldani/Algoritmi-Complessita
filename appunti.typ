@@ -104,3 +104,6 @@
 #pagebreak()
 
 #include "capitoli/succinte/04_elias-fano.typ"
+#pagebreak()
+
+#include "lezioni/lezione22.typ"
