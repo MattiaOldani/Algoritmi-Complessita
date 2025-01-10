@@ -23,6 +23,7 @@
     set page(
       footer: {
         set text(weight: "regular", size: 11pt)
+        set align(center)
         counter(page).display()
       },
     )
