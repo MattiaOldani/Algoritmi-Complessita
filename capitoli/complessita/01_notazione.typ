@@ -10,10 +10,10 @@
 
 Useremo i principali *insiemi numerici* come $NN, ZZ, QQ, RR$ e, ogni tanto, le loro versioni con soli elementi positivi $NN^+, ZZ^+, QQ^+, RR^+$.
 
-Un *magma* è una struttura algebrica $(A, dot)$ formata da un insieme e un'operazione. Se essa è:
-- dotata di $dot$ *associativa* allora è detta *semigruppo*;
-- dotata di un elemento $overline(e) in A$ tale che $ forall x in A quad x dot e = e dot x = x $ allora è detta *monoide*; l'elemento $overline(e)$ è chiamato *elemento neutro* e in un monoide esso è unico; alcuni monoidi importanti sono $(NN, +)$ oppure $(NN, *)$;
-- dotata di $dot$ *commutativa* allora si aggiunge *abeliano* alla sua definizione.
+Un *magma* è una struttura algebrica $(A, plus.circle)$ formata da un insieme e un'operazione. Se essa è:
+- dotata di $plus.circle$ *associativa* allora è detta *semigruppo*;
+- dotata di un elemento $overline(e) in A$ tale che $ forall x in A quad x plus.circle e = e plus.circle x = x $ allora è detta *monoide*; l'elemento $overline(e)$ è chiamato *elemento neutro* e in un monoide esso è unico; alcuni monoidi importanti sono $(NN, +)$ oppure $(NN, dot)$;
+- dotata di $plus.circle$ *commutativa* allora si aggiunge *abeliano* alla sua definizione.
 
 Un *monoide libero* è un monoide i cui elementi sono generati da una base. Vediamo un importante monoide libero che useremo spesso durante il corso.
 

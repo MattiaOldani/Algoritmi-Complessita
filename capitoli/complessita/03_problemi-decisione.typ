@@ -23,8 +23,8 @@ Le due classi più famose sono $P$ e $NP$:
 Cosa sono le *macchine non deterministiche*? Supponiamo di avere un linguaggio speciale, chiamato $N$-python, dotato di una istruzione pazza $ x = ? $ che, quando viene eseguita, sdoppia l'esecuzione del programma, assegnando $x = 0$ nella prima istanza e $x = 1$ nella seconda istanza. Queste due istanze vengono eseguite in parallelo. Questa istruzione può essere però eseguita un numero arbitrario di volte su un numero arbitrario di variabili: questo genera un *albero di computazioni*, nel quale abbiamo delle foglie che contengono uno dei tanti assegnamenti di $0$ e $1$ delle variabili _"sdoppiate"_.
 
 Tutte queste istanze $y_i$ che abbiamo nelle foglie le controlliamo:
-- rispondiamo _SI_ se *esiste* un _SI_ tra tutte le $y_i$;
-- rispondiamo _NO_ se *tutte* le $y_i$ sono _NO_.
+- rispondiamo _SI_ se *ESISTE* un _SI_ tra tutte le $y_i$;
+- rispondiamo _NO_ se *TUTTE* le $y_i$ sono _NO_.
 
 Questa macchina è però impossibile da costruire: posso continuare a forkare il mio programma, ma prima o poi le CPU le finisco per la computazione parallela.
 

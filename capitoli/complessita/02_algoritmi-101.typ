@@ -54,17 +54,23 @@ La *teoria della complessità algoritmica* ci chiede di:
 - se sì, con che costo rispetto a qualche risorsa.
 
 Le risorse che possiamo studiare sono:
-- tempo, come numero di passi o tempo cronometrato;
-- spazio;
+- *tempo*, come numero di passi o tempo cronometrato;
+- *spazio*;
 - numero di CPU nel punto di carico massimo;
 - somma dei tempi delle CPU;
 - energia dissipata.
 
-Noi useremo quasi sempre il *tempo*. Definiamo $ T_A : I_Pi arrow.long NN $ funzione che ci dice, per ogni input, quanto ci mette l'algoritmo $A$ a terminare su quell'input.
+Noi useremo quasi sempre il *tempo*. Definiamo $ T_A : I_Pi arrow.long NN $ la funzione che ci dice, per ogni input, quanto ci mette l'algoritmo $A$ a terminare su quell'input.
 
 Questo approccio però non è molto comodo. Andiamo a raccogliere per lunghezza e definiamo $ t_A : NN arrow.long NN $ la funzione $ t_A (n) = max{T_A (x) bar.v x in I_Pi and abs(x) = n} $ che va ad applicare quella che è la filosofia *worst case*. In poche parole, andiamo a raccogliere gli input con la stessa lunghezza e prendiamo, per ciascuna categoria, il numero di passi massimo che è stato rilevato. Anche questa soluzione però non è bellissima: è una soluzione del tipo _"STA ANDANDO TUTTO MALEEEEE"_.
 
-Abbiamo altre soluzioni? Sì, ma anche loro non sono il massimo:
+#v(12pt)
+
+#figure(image("assets/02_domenico.png", width: 40%))
+
+#v(12pt)
+
+Abbiamo altre soluzioni? Sì, ma non fanno meglio di quanto abbiamo già:
 - la soluzione *best case* è troppo sbilanciata verso il _"sta andando tutto bene"_;
 - la soluzione *average case* è complicata perché serve una distribuzione di probabilità.
 

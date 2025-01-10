@@ -82,7 +82,7 @@ Quali altri classi esistono in questo zoo della classi di ottimizzazione?
 
 #v(12pt)
 
-#figure(image("assets/04_gerarchia.svg", width: 100%))
+#figure(image("assets/04_gerarchia.svg"))
 
 #v(12pt)
 
@@ -94,4 +94,4 @@ Il container più grande di tutti è $NPO$, che contiene anche gli $NPO$-complet
 
 Rompiamo l'ordine e vediamo infine altre due classi:
 - $PTAS$ (_Polynomial Time Approximation Scheme_): classe che contiene gli algoritmi approssimabili a piacere, ma che non sono totalmente polinomiali;
-- $FPTAS$ (_Fully Polynomial Time Approximation Scheme_): classe che mantiene un tempo polinomiale al ridursi dell'errore, visto che più l'errore è vicino a $1$ e più tempo ci metto.
+- $FPTAS$ (_Fully Polynomial Time Approximation Scheme_): classe che contiene gli algoritmi approssimabili a piacere, ma che mantengono un tempo polinomiale al ridursi dell'errore.
