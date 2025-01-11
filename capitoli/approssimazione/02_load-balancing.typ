@@ -32,7 +32,7 @@ Usciamo fuori dai problemi in $PO$ e vediamo il problema del *Load Balancing*. E
 - *tipo*: $min$.
 
 #theorem()[
-  Load Balancing è $NPO$-completo.
+  Load Balancing è $NPOC$.
 ]
 
 Che problemi stanno in $NPO$? È difficile dare una definizione di non determinismo nei problemi di ottimizzazione, però possiamo definire $NPOC$: un problema di ottimizzazione $Pi$ è $NPO$-completo se e solo se:
@@ -53,7 +53,7 @@ Vediamo un *algoritmo greedy*, una tecnica di soluzione che cerca di ottimizzare
       + $A_i arrow.l emptyset.rev$ (task assegnate alla macchina)
       + $L_i arrow.l 0$ (carico della macchina)
     + for $j$ in $n$:
-      + $i arrow.l arg min_(t in m) L_t$ (indice macchina con meno carico)
+      + $i arrow.l arg min_(t in m) L_t$ (indice della macchina con meno carico)
       + $A_i arrow.l A_i union {j}$
       + $L_i arrow.l L_i + t_j$
     + *output* $alpha$ assegna ogni elemento $j$ di $A_i$ alla macchina $i$
@@ -70,7 +70,7 @@ Il tempo d'esecuzione di questo algoritmo è $O(n m)$, ed è molto comodo perch�
   Chiamiamo $L^*$ il valore della funzione obiettivo nella soluzione ottima.
 
   Osserviamo che:
-  + vale $ L^* gt.eq 1/m sum_j t_j , $ ovvero il carico migliore ci mette almeno un tempo uguale allo "spezzamento perfetto", cioè quello che assegna ad ogni macchina lo stesso carico (_caso ideale, che segue la media_);
+  + vale $ L^* gt.eq 1/m sum_j t_j , $ ovvero il carico migliore ci mette almeno un tempo uguale allo _"spezzamento perfetto"_, cioè quello che assegna ad ogni macchina lo stesso carico (_caso ideale, che segue la media_);
   + vale $ L^* gt.eq max_j t_j , $ ovvero una macchina deve impiegare almeno il tempo più grande tra quelli disponibili.
 
   Guardiamo la macchina che dà il massimo carico, ovvero sia $hat(i)$ tale che $L_(hat(i)) = L$ e sia $hat(j)$ l'ultimo compito che le è stato assegnato. Se assegno $hat(j)$ vuol dire che poco prima questa macchina era la più scarica, quindi $ L_(hat(i)) - t_(hat(j)) = underbracket(L_(hat(i)) ', "carico in quel momento") lt.eq L_i quad forall i in m . $
@@ -118,13 +118,11 @@ Vediamo ora un algoritmo migliore per il Load Balancing.
 
   Osserviamo inoltre che $L^* gt.eq 2 t_m$, ovvero che $1/2 L^* gt.eq t_m$, con $ underbracket(t_0 gt.eq dots gt.eq t_m, m+1 "task") gt.eq t_(m+1) gt.eq dots gt.eq t_(n-1) . $ Infatti, la macchina che riceve $2$ task ha carico $ gt.eq t_i + t_j gt.eq 2 t_m . $
 
-  Sia $hat(i)$ l'indice della macchina con carico massimo, ovvero $L_(hat(i)) = L$. Se $hat(i)$ ha un compito solo, la soluzione è ottima.
-
-  Consideriamo allora $hat(i)$ con più di un compito: sia $hat(j)$ l'ultimo compito assegnato a quella macchina. So che $hat(j) gt.eq m$, perché le prime $m$ task le do ad ogni macchina $i$ distinta, allora $ L = L_(hat(i)) = underbracket(L_(hat(i)) - t_(hat(j)), lt.eq L^*) + underbracket(t_(hat(j)), lt.eq t_m lt.eq 1/2 L^*) lt.eq 3/2 L^* . $ Ma allora $ frac(L,L^*) lt.eq 3/2 . #qedhere $
+  Sia $hat(i)$ l'indice della macchina con carico massimo, ovvero $L_(hat(i)) = L$. Se $hat(i)$ ha un compito solo, la soluzione è ottima. Consideriamo allora $hat(i)$ con più di un compito: sia $hat(j)$ l'ultimo compito assegnato a quella macchina. So che $hat(j) gt.eq m$, perché le prime $m$ task le do ad ogni macchina $i$ distinta, allora $ L = L_(hat(i)) = underbracket(L_(hat(i)) - t_(hat(j)), lt.eq L^*) + underbracket(t_(hat(j)), lt.eq t_m lt.eq 1/2 L^*) lt.eq 3/2 L^* . $ Ma allora $ frac(L,L^*) lt.eq 3/2 . #qedhere $
 ]
 
-Graham nel $1969$ ha poi dimostrato che questo algoritmo è in realtà in $gAPX(4/3)$.
+Graham nel $1969$ ha poi dimostrato che questo algoritmo in realtà è $ gAPX(4/3) . $
 
 Hochbaum e Shmoys hanno dimostrato, nel $1988$, che:
-- Load Balancing è un problema $PTAS$;
-- Load Balancing non è un problema $FPTAS$.
+- Load Balancing ammette un $PTAS$;
+- Load Balancing non ammette un $FPTAS$.

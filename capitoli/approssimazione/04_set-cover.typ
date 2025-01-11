@@ -22,16 +22,6 @@
 
 = Set Cover
 
-Il prof dell'aula accanto è un chad: #align(center)[
-  #block(
-    fill: rgb("#9FFFFF"),
-    inset: 8pt,
-    radius: 4pt,
-
-    [*non è qui per trasmettere informazioni, ma per trasmettere emozioni*],
-  )
-]
-
 == Funzione armonica
 
 Diamo prima una definizione di *funzione armonica*: essa è la funzione $ H : NN^(>0) arrow.long RR $ tale che $ H(n) = sum_(i=1)^n 1/i space . $
@@ -44,7 +34,7 @@ Diamo prima una definizione di *funzione armonica*: essa è la funzione $ H : NN
 
 Vediamo due proprietà importanti di questa funzione.
 
-La prima proprietà ci dà un *upper bound* alla funzione armonica, ovvero $ H(n) lt.eq 1 + integral_1^n 1/x dif x = 1 + [ln(x)]_1^n = 1 + ln(n) - cancel(ln(1)) = 1 + ln(n) . $ Questa la possiamo capire dal grafico: tutta l'area tra i rettangoli e la funzione $1/x$ la andiamo a prendere nella maggiorazione.
+La prima proprietà ci dà un *upper bound* alla funzione armonica, ovvero $ H(n) lt.eq 1 + integral_1^n 1/x dif x = 1 + [ln(x)]_1^n = 1 + ln(n) - cancel(ln(1)) = 1 + ln(n) . $
 
 La seconda proprietà afferma che $ integral_t^(t+1) 1/x dif x lt.eq 1 dot 1/t = 1/t . $ Stiamo dando un altro upper bound: visto che $1/x$ è decrescente possiamo stimare la sua area tra $t$ e $t+1$ usando un rettangolo con altezza uguale all'altezza della funzione calcolata in $t$.
 
@@ -66,7 +56,7 @@ Vediamo la definizione di questo problema:
 
 Questo problema è $NPOC$. La motivazione principale è la presenza di due tendenze contrastanti:
 - scelgo insiemi grandi per coprire il più possibile subito, ma vado a spendere troppo;
-- scelgo insiemi piccoli che mi vanno a costare poco, ma potrei prenderne così tanti da superare la soluzione precedente.
+- scelgo insiemi piccoli che mi vanno a costare poco, ma potrei prenderne così tanto da superare la soluzione precedente.
 
 Costruiremo la nostra soluzione aggiungendo mano a mano ad un insieme le offerte scelte. La scelta di un'offerta la andiamo a fare guardando il numero di elementi nuovi che andrebbe a coprire: per avere una buona metrica guarderemo il rapporto tra quanto paghiamo e quanti elementi nuovi inseriamo, e lo andremo a minimizzare.
 
@@ -166,5 +156,3 @@ Questo qui non è un *algoritmo tight*: infatti, riusciremo a creare un input ad
 #theorem()[
   Se $P eq.not NP$ non esiste un algoritmo che approssimi Set Cover meglio di $ (1-o(1)) log(n) . $
 ]
-
-Visti questi risultati, Set Cover finisce in $gAPX(log(n))$.

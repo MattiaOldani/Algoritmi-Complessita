@@ -46,7 +46,7 @@ Questa tecnica è molto comoda quando i problemi sono di natura esponenziale. Il
 Prima di vedere la PD applicata a Knapsack, introduciamo il concetto di *pseudo-polinomialità*.
 
 #example()[
-  Voglio un programma che decide se un numero naturale $x$ è primo (_BTW è stato trovato finalmente un algoritmo polinomiale per questo problema_). Il programma è molto facile da scrivere, vediamolo in GO.
+  Voglio un programma che decide se un numero naturale $x$ è primo (_BTW è stato trovato finalmente un algoritmo polinomiale per questo problema_). Il programma è molto tremendamente difficile da scrivere, vediamolo in GO.
 
   #align(center)[
     ```go
@@ -147,7 +147,7 @@ Una cosa che non abbiamo mai detto ma che è banale: gli algoritmi che utilizzia
 - accettiamo una cosa *sub-ottima*, che è peggio dell'ottimo;
 - non accettiamo *mai* una soluzione *sub-ammissibile*, che va fuori dai bound.
 
-Andiamo a comprimere la seconda tabella perché la prima rischia di rompere i vincoli di ammissibilità. Questa tecnica di compressione si chiama *scaling*.
+Andiamo a comprimere la seconda tabella perché la prima rischia di rompere i vincoli di ammissibilità. Questa tecnica di compressione si chiama *scaling*. Non posso comprimere la prima tabella perché le righe mi danno l'*ammissibilità*: se comprimo potrei ottenere soluzioni che nella compressa vanno bene ma non vanno bene in quella normale.
 
 #align(center)[
   #pseudocode-list(title: [FPTAS per Knapsack])[
@@ -209,7 +209,3 @@ La matrice è formata da:
 La dimensione è quindi $ "rows" dot "cols" lt.eq n^2 hat(v)_max = n^2 ceil(frac(v_max, theta.alt)) = n^2 ceil(frac(2 n v_max, epsilon v_max)) = O(n^3 / epsilon) . $
 
 La dimensione della tabella risulta quindi polinomiale in $n$ ma anche in $epsilon$. Questa è una enorme differenza rispetto al PTAS della lezione precedente: infatti, il PTAS per $2$-LoadBalancing aveva $epsilon$ in un esponenziale.
-
-Non posso comprimere la prima tabella perché le righe mi danno l'*ammissibilità*: se comprimo potrei ottenere soluzioni che nella compressa vanno bene ma non vanno bene in quella normale.
-
-Per le soluzioni esatte, visto che uso sempre la colonna prima, posso tenere in memoria solo questa e costruire mano a mano quella corrente. Non mi cambia il tempo ma lo spazio.

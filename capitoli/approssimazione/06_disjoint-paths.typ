@@ -30,7 +30,7 @@ Diamo una definizione più formale di questo problema:
   - lista $s_0, dots, s_(k-1) in N$ di sorgenti;
   - lista $t_0, dots, t_(k-1) in N$ di destinazioni;
   - parametro di congestione $c in NN^+$;
-- *soluzione ammissibile*: insieme $I subset.eq k$ tale che i cammini $pi_i : s_i arrow t_i quad forall i in I$ non usano archi di $G$ più di $c$ volte; in altre parole, ogni arco è usato al massimo da $c$ cammini;
+- *soluzione ammissibile*: insieme $I subset.eq k$ tale che i cammini $pi_i : s_i arrow t_i$ non usano archi di $G$ più di $c$ volte; in altre parole, ogni arco è usato al massimo da $c$ cammini;
 - *obiettivo*: $abs(I)$;
 - *tipo*: $max$.
 
@@ -102,7 +102,7 @@ Noi studieremo l'algoritmo quando finiamo i cammini corti. Sia $overline(l)$ la 
 
 Facciamo un paio di osservazioni importanti per calcolare il $gamma$ dell'approssimazione.
 
-Osserviamo che $ sum_(i in I^* slash I_o) overline(l)(pi_i^*) gt.eq beta^c abs(I^* slash I_o) $ per il lemma 1. Osserviamo anche che nella soluzione ottima nessun arco è usato più di $c$ volte. Quindi possiamo maggiorare il costo con il costo di tutti gli archi moltiplicati per $c$, ovvero $ sum_(i in I^* slash I_o) overline(l)(pi_i^*) lt.eq c sum_(a in A) overline(l)(a) lt.eq c (beta^(c+1) abs(overline(I)) + m) . $ L'ultima minorazione è per il lemma 2.
+Osserviamo che $ sum_(i in I^* slash I_o) overline(l)(pi_i^*) gt.eq beta^c abs(I^* slash I_o) $ sommando su $(I slash I_o)$ in entrambi i membri della disequazione. Osserviamo inoltre che nella soluzione ottima nessun arco è usato più di $c$ volte. Quindi possiamo maggiorare il costo con il costo di tutti gli archi moltiplicati per $c$, ovvero $ sum_(i in I^* slash I_o) overline(l)(pi_i^*) lt.eq c sum_(a in A) overline(l)(a) lt.eq_(l 2) c (beta^(c+1) abs(overline(I)) + m) . $
 
 Grazie a queste due osservazioni possiamo trovare il $gamma$ che approssima questo algoritmo.
 

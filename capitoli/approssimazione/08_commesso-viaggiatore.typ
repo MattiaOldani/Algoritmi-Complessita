@@ -26,7 +26,11 @@
 
 La *teoria dei grafi* nasce con Eulero a fine $'700$ con il *problema dei ponti di Konigsberg* (_oggi Kaliningrad_): abbiamo un fiume con due isole, e i collegamenti argine-isole e isole-isole sono definiti da $7$ ponti.
 
-*IMMAGINE*
+#v(12pt)
+
+#figure(image("assets/08_ponti.svg", width: 30%))
+
+#v(12pt)
 
 Possiamo scegliere un punto di partenza della città che mi permetta di passare per tutti i punti una e una sola volta per poi tornare al punto di partenza? Eulero, un fratello, astrae, quindi il problema si riduce alla ricerca di un *circuito euleriano* in un grafo non orientato.
 
@@ -37,9 +41,8 @@ In realtà, quello che stiamo utilizzando è un *multigrafo*: questo perché esi
 ]
 
 #proof()[
-  Dimostriamo solo una delle due implicazioni in modo non formale.
 
-  {$arrow.long.double.l$}
+  {$arrow.long.double.l$ solo questo}
 
   Partiamo da un vertice $x_0$ e ci spostiamo su un lato che incide su $x_0$ fino al vertice $x_1$. Ora, $x_1$ ha grado pari quindi da $x_1$ ho almeno un altro lato, che va a $x_2$. Ora, eccetera.
 
@@ -47,10 +50,12 @@ In realtà, quello che stiamo utilizzando è un *multigrafo*: questo perché esi
   - incappiamo in un ciclo con un nodo che abbiamo già visitato, ma non ci sono problemi; infatti, se per esempio da $x_3$ vado a $x_1$ devo avere un altro nodo per avere il grado di $x_1$ pari;
   - arriviamo a $x_0$: abbiamo ancora due casi:
     - abbiamo esaurito i lati;
-    - abbiamo cancellato un numero pari di lati da ogni nodo e ripartiamo con il percorso. $qedhere$
+    - abbiamo cancellato un numero pari di lati da ogni nodo e ripartiamo con il percorso.
+
+  Finito, odio il quadratino.
 ]
 
-Vediamo ora il lemma delle strette di mano: dato un gruppo di persone che si stringono la mano, il numero di persone che stringono la mano ad un numero dispari di persone è pari. Come si formalizza?
+Vediamo ora il lemma delle strette di mano: dato un gruppo di persone che si stringono la mano, il numero di persone che stringono la mano ad un numero dispari di persone è pari.
 
 #lemma([Handshaking lemma])[
   In un grafo, il numero di vertici di grado dispari è pari.
@@ -61,8 +66,6 @@ Vediamo ora il lemma delle strette di mano: dato un gruppo di persone che si str
 
   Ma allora sto sommando tutti gli $x in V$ tali che $d(x)$ è dispari.
 ]
-
-Questo proprietà sono tipo delle Ramsey-type, ovvero teorie trovare per il meme che cercano la regolarità nel caos.
 
 == Algoritmi
 
@@ -97,7 +100,7 @@ La seconda modifica che introduciamo è rendere la distanza uno *spazio metrico*
 Queste due modifiche rendono trasformando TSP nel problema *TSP metrico*.
 
 Ci mancano infine _due ingredienti_, _due algoritmi_:
-- *minimum spanning tree*: dato un grafo connesso pesato (_sui lati_), trovare un *albero di copertura* (_ovvero che tocca tutti i vertici_) di peso totale minimo. Un *albero* in teoria dei grafi è un grafo connesso aciclico. Se il grafo non è connesso si chiama *foresta*. Gli alberi in informatica sono invece *alberi radicati*, ovvero viene scelto un vertice come radice e il grafo viene _"appeso"_ a questo vertice e il resto cade per gravità. Questo problema si risolve in tempo polinomiale con vari algoritmi, il più famoso è l'*algoritmo di Kruskal*;
+- *minimum spanning tree*: dato un grafo connesso pesato (_sui lati_), trovare un *albero di copertura* (_ovvero che tocca tutti i vertici_) di peso totale minimo. Questo problema si risolve in tempo polinomiale con vari algoritmi, il più famoso è l'*algoritmo di Kruskal*;
 - *minimum-weight perfect matching*: data una cricca pesata con un numero pari di vertici, trovare un matching perfetto di peso minimo. In modo informale: i nodi si amano tutti (_cricca_), c'è attrito tra le coppie (_peso_), ma devo far sposare tutti (_matching perfetto_). Questo problema si risolve in tempo polinomiale con l'*algoritmo di Blossom*.
 
 Possiamo finalmente vedere l'algoritmo per il TSP metrico.
@@ -190,9 +193,7 @@ Vediamo due lemmi che saranno utili per calcolare l'approssimazione che fornisce
   Calcoliamo infine $ frac(delta, delta^*) = frac(3/2 n + epsilon n/2, (1 + epsilon) n + 2) space arrow.long_(n arrow infinity) space 3/2 . qedhere $
 ]
 
-Si può dimostrare che TSP metrico è $3/2$-approssimabile, e che l'algoritmo di Christofides è il migliore disponibile.
-
-L'algoritmo di Christofides è di fine anni $'70$, ed è il migliore. Possiamo fare di meglio modificando il grafo, imponendo le distanze tutte uguali a $1$ o $2$. Questo algoritmo è stato scoperto in parallelo da un personaggio russo durante la guerra fredda, ma visto che non si parlavano nessuno sapeva dell'altro.
+L'algoritmo di Christofides è stato ideato verso la fine degli anni $'70$, ed è il migliore attualmente a nostra disposizione. Possiamo fare di meglio modificando il grafo, imponendo le distanze tutte uguali a $1$ o $2$. Questo algoritmo è stato scoperto in parallelo da un personaggio russo durante la guerra fredda, ma visto che non si parlavano nessuno sapeva dell'altro.
 
 #lemma()[
   Il problema di decidere se un grafo ammetta un circuito hamiltoniano è $NPC$.
@@ -215,5 +216,7 @@ L'algoritmo di Christofides è di fine anni $'70$, ed è il migliore. Possiamo f
   - se $G$ ha un CH allora in $G'$ ho un CH di lunghezza $n$, ma essendo un algoritmo approssimato mi viene restituito un CH un pelo più lungo ma comunque $lt.eq alpha n$;
   - se $G$ non ha un CH allora in $G'$ ho un CH di lunghezza $gt.eq ceil(alpha n) + 1$.
 
-  I due intervalli non si sovrappongono: infatti, se per assurdo $alpha n gt.eq ceil(alpha n) + 1$, allora $ alpha gt.eq frac(ceil(alpha n) + 1, n) gt.eq frac(alpha n + 1, n) = alpha + 1/n , $ che è un assurdo. I due insiemi sono quindi non sovrapposti. Allora riesco a decidere se $G$ ha un CH in tempo polinomiale, ma per il Lemma1 questo non è possibile in tempo polinomiale.
+  I due intervalli non si sovrappongono: infatti, se per assurdo $alpha n gt.eq ceil(alpha n) + 1$, allora $ alpha gt.eq frac(ceil(alpha n) + 1, n) gt.eq frac(alpha n + 1, n) = alpha + 1/n , $ che è un assurdo. I due insiemi quindi non si sovrappongono.
+
+  Ma questo è impossibile: riesco a decidere se $G$ ha un CH in tempo polinomiale, ma per il lemma precedente questo questo non è possibile in tempo polinomiale.
 ]

@@ -23,16 +23,8 @@
 = Max Matching
 
 Il primo (_e unico_) problema di ottimizzazione della classe $PO$ che vedremo sarà il problema di *Max Matching*. Esso è definito da:
-- *input*: grafo $G = (V,E)$ non orientato e bipartito, ma quest'ultima condizione può anche essere tolta. Un grafo bipartito è un grafo nel quale i vertici sono divisi in due blocchi e i lati vanno da un vertice del primo blocco ad un vertice del secondo blocco (_e viceversa, ma tanto è non orientato_). In poche parole, non ho lati che collegano vertici nello stesso blocco, quindi siamo #align(center)[
-  #block(
-    fill: rgb("#9FFFFF"),
-    inset: 8pt,
-    radius: 4pt,
-
-    [*POCO LGBTQ+ FRIENDLY (_cit. Boldi_)*],
-  )
-]
-- *soluzioni ammissibili*: un *matching* $M$, una scelta di lati tale che i vertici del grafo risultano incisi al più da un lato. In poche parole, *viva i matrimoni non poligami*, dobbiamo far sposare persone che si piacciono e solo una volta, ma accettiamo anche i single (_come me_);
+- *input*: grafo $G = (V,E)$ non orientato e bipartito, ma quest'ultima condizione può anche essere tolta. Un *grafo bipartito* è un grafo nel quale i vertici sono divisi in due blocchi (_colori_) e i lati vanno da un vertice del primo blocco ad un vertice del secondo blocco (_e viceversa, ma tanto è non orientato_). In poche parole, non ho lati che collegano vertici nello stesso blocco;
+- *soluzioni ammissibili*: un *matching* $M$, una scelta di lati tale che i vertici del grafo risultano incisi al più da un lato. Il matching lo vediamo come un matrimonio, quindi dobbiamo evitare i matrimoni poligami, ovvero far incidere ogni vertice da più di un arco; non dobbiamo far sposare tutti, accettiamo anche i single (_come me_ #emoji.face.tear);
 - *obiettivo*: numero di match $abs(M)$;
 - *tipo*: $max$.
 
@@ -46,6 +38,10 @@ Questa è un'informazione pazza: se so che esiste un cammino aumentante il match
 
 #lemma()[
   Se esiste un cammino aumentante per il matching $M$ allora $M$ non è massimo.
+]
+
+#proof()[
+  Banale, se esiste un cammino aumentante allora tramite l'operazione di switch ottengo un matching che contiene un lato in più di $M$, quindi $M$ non è massimo.
 ]
 
 #lemma()[

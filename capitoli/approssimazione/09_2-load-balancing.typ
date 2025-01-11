@@ -22,7 +22,7 @@
 
 = PTAS per 2-LoadBalancing
 
-Ricordiamo cosa sono i $PTAS$: essi sono problemi che sono *approssimabili a meno di una qualunque costante*. In poche parole, dato un problema, posso scegliere una qualunque costante (_tasso di approssimazione_) tale che esiste un algoritmo che mi risolve il dato problema con il tasso di approssimazione scelto. Purtroppo, più il tasso di errore scelto è basso, più è esponenziale il tempo.
+Ricordiamo cosa sono i $PTAS$: sono problemi che sono *approssimabili a meno di una qualunque costante*. In poche parole, dato un problema, posso scegliere una qualunque costante (_tasso di approssimazione_) tale che esiste un algoritmo che mi risolve il dato problema con il tasso di approssimazione scelto. Purtroppo, più il tasso di errore scelto è basso, più è esponenziale il tempo.
 
 Il problema per il quale vediamo un PTAS è quello che abbiamo già visto, nel quale però viene fissato il numero di macchine a $2$. In questo caso, il carico generale sarà peggiore di Load Balancing puro, ma almeno il problema è un PTAS.
 
@@ -68,7 +68,7 @@ Tutti i $PTAS$ sono così: la parte più importante del problema (_in questo cas
 
   Il primo caso avviene quando $L_0 = y_0$: in questo caso tutti i task della seconda fase sono finiti a $M_1$. In poche parole, in ogni step della seconda fase avevo $M_1$ più scarica di $M_0$. Ma questo che abbiamo ottenuto è l'assegnamento globale ottimo: infatti, partendo da una soluzione già ottima, se avessi sbagliato qualcosa nella fase greedy avrei assegnato almeno un task a $M_0$, ma questo avrebbe peggiorato lo sbilanciamento ottenuto nella fase ottima.
 
-  Il secondo caso è quello _"normale"_: assegno un po' di task alle due macchine ma non in modo esclusivo. Sia $t_h$ l'ultimo task assegnato a $M_0$, il più piccolo presente in $M_0$. Sappiamo che $ L_0 - t_h lt.eq_("assegnamento") L'_1 lt.eq_("altri") L_1 . $ Sommiamo $L_0$ ad entrambi i membri e dividiamo per $2$, quindi $ 2 L_0 - t_h lt.eq underbracket(L_0 + L_1, =T) arrow.long.double L_0 - t_h / 2 lt.eq T/2 arrow.long.double L_0 lt.eq T/2 + t_h / 2 . quad (**) $
+  Il secondo caso è quello _"normale"_: assegno un po' di task alle due macchine ma non in modo esclusivo. Sia $t_h$ l'ultimo task assegnato a $M_0$, il più piccolo presente in $M_0$. Sappiamo che $ L_0 - t_h lt.eq_("assegnamento") L'_1 lt.eq_("altro") L_1 . $ Sommiamo $L_0$ ad entrambi i membri e dividiamo per $2$, quindi $ 2 L_0 - t_h lt.eq underbracket(L_0 + L_1, =T) arrow.long.double L_0 - t_h / 2 lt.eq T/2 arrow.long.double L_0 lt.eq T/2 + t_h / 2 . quad (**) $
 
   Sappiamo che $ T = t_0 + dots + t_k + t_(k+1) + dots + t_(n-1) $ e che i $t_i$ sono ordinati in senso decrescente. Ma allora, _stando molto larghi_, vale $ T = underbracket(t_0 + dots + t_k, forall i = 0\, dots\, k quad t_i gt.eq t_h) + underbracket(t_(k+1) + dots + t_(n-1), > 0) gt.eq (k+1) t_h . quad (***) $
 
@@ -84,5 +84,3 @@ Se $epsilon$ molto basso potrei richiedere nella fase $1$ di assegnare tutti i t
 #proof()[
   La dimostrazione è scritta negli underbracket. Nella fase $1$ di assegnamento esatto questo lo posso fare in $2^k approx 2^(1/epsilon)$ modi. La fase $2$ ha tempo $O(n - k)$. L'ordinamento avviene con qualunque algoritmo non banale.
 ]
-
-Gli FPTAS, a differenza dei PTAS, hanno una parte _Fully_ polinomiale, ovvero anche la parte di problema esaustiva è polinomiale.

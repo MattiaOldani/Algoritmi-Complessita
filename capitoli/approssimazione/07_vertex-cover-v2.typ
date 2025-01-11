@@ -24,7 +24,7 @@
 
 == Programmazione lineare e lineare intera
 
-Introduciamo la *programmazione lineare* ($LP$): essa è un problema di ottimizzazione definito da:
+Introduciamo la *programmazione lineare* ($LP$). Essa è un problema di ottimizzazione definito da:
 - *input*:
   - $A in QQ^(m times n)$ matrice di coefficienti;
   - $b in QQ^m$ vettore di termini noti;
@@ -46,7 +46,7 @@ Vediamo una versione leggermente diversa di $LP$ nelle premesse, ma profondament
 - *funzione obiettivo*: $c^T x$;
 - *tipo*: $min$ (_in realtà non cambia niente_).
 
-La differenza sembra minima, ma è in realtà enorme: infatti, $ILP in NPOC$ solo per l'imposizione di soluzioni intere.
+La differenza sembra minima, ma è in realtà enorme: infatti, $ILP$ diventa un problema $NPOC$ solo per l'imposizione di soluzioni intere.
 
 == Algoritmo di arrotondamento
 
@@ -79,7 +79,7 @@ Sia $w^*_(ILP)$ l'ottimo ottenuto nel problema ILP, e sia $w^*_(LP)$ l'ottimo ot
 ]
 
 #proof()[
-  I vincoli da verificare sono $ cases(overline(x)_i + overline(x)_j gt.eq 1 quad & forall{i,j} in E, 0 lt.eq overline(x)_i lt.eq 1 & forall i in V) $ con $x in ZZ^n$. Partiamo dal secondo vincolo: Come abbiamo ottenuti i vari $x_i$? Sappiamo che $ overline(x)_i = cases(0 & "se" x_i^* < 0.5, 1 quad & "se" x_i^* gt.eq 0.5) quad forall i in V , $ ma allora il secondo vincolo è verificato, avendo ogni $x_i$ valore nell'insieme ${0,1}$.
+  I vincoli da verificare sono $ cases(overline(x)_i + overline(x)_j gt.eq 1 quad & forall{i,j} in E, 0 lt.eq overline(x)_i lt.eq 1 & forall i in V) $ con $x in ZZ^n$. Partiamo dal secondo vincolo: come abbiamo ottenuti i vari $x_i$? Sappiamo che $ overline(x)_i = cases(0 & "se" x_i^* < 0.5, 1 quad & "se" x_i^* gt.eq 0.5) quad forall i in V , $ ma allora il secondo vincolo è verificato, avendo ogni $x_i$ valore nell'insieme ${0,1}$.
 
   Vediamo ora il primo vincolo: l'unico caso nel quale non è rispettato è quando $overline(x)_i + overline(x)_j = 0$, ovvero $overline(x)_i = overline(x)_j = 0$. Se ai due vertici è assegnato $0$ vuol dire che $x_i^* < 0.5$ e $x_j^* < 0.5$, ma questo è assurdo: infatti, nella soluzione ottima in LP vale il vincolo $x_i^* + x_j^* gt.eq 1$, che non è però soddisfatto dalla somma di due quantità minori di $0.5$.
 ]
@@ -112,46 +112,4 @@ Sia $w^*_(ILP)$ l'ottimo ottenuto nel problema ILP, e sia $w^*_(LP)$ l'ottimo ot
   Dopo quattro estenuanti lemmi possiamo affermare che $ frac(w, w^*_("ILP")) lt.eq_1 frac(w, w^*_("LP")) lt.eq_4 frac(2 w^*_("LP"), w^*_("LP")) = 2 . qedhere $
 ]
 
-#align(center)[
-  #block(
-    fill: rgb("#9FFFFF"),
-    inset: 8pt,
-    radius: 4pt,
-
-    [*Mi faccio prendere dal vento autistico (_cit. Boldi_)*],
-  )
-]
-
-#align(center)[
-  #block(
-    fill: rgb("#9FFFFF"),
-    inset: 8pt,
-    radius: 4pt,
-
-    [*Implementiamo, non so se sarò in grado di comunicarvi delle emozioni come il docente della porta accanto (_cit. Boldi_)*],
-  )
-]
-
-#align(center)[
-  #block(
-    fill: rgb("#9FFFFF"),
-    inset: 8pt,
-    radius: 4pt,
-
-    [*Mi hanno fornito un'emozione (_cit. Boldi_)*],
-  )
-]
-
-#align(center)[
-  #block(
-    fill: rgb("#9FFFFF"),
-    inset: 8pt,
-    radius: 4pt,
-
-    [*Sto facendo delle osservazioni assurde (_cit. Boldi_)*],
-  )
-]
-
 Vertex Cover è *tight*, si può dimostrare ma non lo facciamo.
-
-Sarebbe bello avere algoritmi che, oltre a darti un valore con una data approssimazione (_teorica_) ti dica anche quanto è l'approssimazione vera del risultato fornito. Così posso capire al massimo quanto sono lontano dall'approssimazione teorica.

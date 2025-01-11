@@ -33,31 +33,14 @@ Vediamo come è definito:
 - *tipo*: $min$.
 
 Sembra il problema di Dominating Set ma ci sono differenze:
-- in Dominating Set andiamo a scegliere una serie di vertici $X$, dette guardie, e tutti i _vertici_ non scelti hanno un arco che va in almeno una guardia
+- in Dominating Set andiamo a scegliere una serie di vertici $X$, dette guardie, e tutti i _vertici_ non scelti hanno almeno un arco che va in una guardia
 - in Vertex Cover andiamo a scegliere una serie di vertici $X$ e tutti i _lati_ hanno almeno un vertice nell'insieme scelto.
 
 #v(12pt)
 
-// da rifare assolutamente, terribile
-#columns(2)[
-  #figure(image("assets/05_ds.svg", width: 100%))
-
-  #colbreak()
-
-  #figure(image("assets/05_vc.svg", width: 100%))
-]
+#figure(image("assets/05_ds-e-vc.svg", width: 100%))
 
 #v(12pt)
-
-Questa differenza #align(center)[
-  #block(
-    fill: rgb("#9FFFFF"),
-    inset: 8pt,
-    radius: 4pt,
-
-    [*mi manda in sbattimento (_cit. Boldi_)*],
-  )
-]
 
 Se abbiamo un Vertex Cover allora abbiamo anche un Dominating Set.
 
@@ -68,16 +51,6 @@ I *problemi basati sul pricing* sono problemi economici dove ho:
 - agenti che decidono se entrare o meno nel gioco accettando o meno le offerte degli altri agenti.
 
 I primi agenti sono i _lati_, che pagano una certa quota $p_e$ per farsi coprire da un certo vertice, mentre i secondi sono i vertici, che vedono se entrare o meno nel gioco in base a quanto vengono pagati.
-
-#align(center)[
-  #block(
-    fill: rgb("#9FFFFF"),
-    inset: 8pt,
-    radius: 4pt,
-
-    [*I vertici sono una gang, una mafia, vogliono massimizzare quello che portano a casa (_cit. Boldi_)*],
-  )
-]
 
 Associamo ad ogni lato un prezzo che pagherebbero ai vertici incidenti per farsi coprire da loro.
 
@@ -155,16 +128,6 @@ Data un pricing, esso è *stretto* sul vertice $i$ se e solo se $ sum_(e in E an
 
 Perché siamo sicuri che questo algoritmo sia uno di approssimazione? Perché i lati non parlano tra di loro, non si mettono d'accordo su cosa fare.
 
-#align(center)[
-  #block(
-    fill: rgb("#9FFFFF"),
-    inset: 8pt,
-    radius: 4pt,
-
-    [*Chiudiamo la porta, c'è il prof che regala emozioni (_cit. Boldi_)*],
-  )
-]
-
 L'algoritmo che abbiamo visto non vuole avere lati con entrambi i vertici incidenti stretti: infatti, se così fosse quel lato non verrebbe coperto perché i vertici non sono invogliati ad entrare nell'affare.
 
 #lemma()[
@@ -186,13 +149,3 @@ L'algoritmo che abbiamo visto non vuole avere lati con entrambi i vertici incide
 ]
 
 Non sappiamo molto di più: non sappiamo se possiamo andare meglio di $2$, ma sappiamo che esiste un PTAS, ovvero non si conosce una $gamma$-approssimazione con $gamma < 2$. Siamo quindi in un caso di inapprossimabilità, ci sarà un minimo tasso ma non sappiamo quanto è.
-
-#align(center)[
-  #block(
-    fill: rgb("#9FFFFF"),
-    inset: 8pt,
-    radius: 4pt,
-
-    [*Networkx riempie di emozioni (_cit. Boldi_)*],
-  )
-]

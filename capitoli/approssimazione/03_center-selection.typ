@@ -74,7 +74,7 @@ Costruiamo una prima soluzione facendo finta di sapere un dato che però dopo no
 ]
 
 #proof()[
-  Se arriviamo alla fine dell'algoritmo vuol dire che $S$ è stato svuotato, perché ogni $s in S$ è stato cancellato da un certo $overline(s)$ per la sua distanza. Sappiamo che $ rho_C lt.eq delta_C (s) lt.eq d(s,overline(s)) lt.eq 2r , $ ma allora $ frac(rho_C, rho^*) lt.eq frac(2r, rho^*) . #qedhere $
+  Se arriviamo alla fine dell'algoritmo vuol dire che $S$ è stato svuotato, perché ogni $s in S$ è stato cancellato da un certo $overline(s)$ per la sua distanza. Sappiamo che $ rho_C lt.eq d(s,overline(s)) lt.eq 2r , $ ma allora $ frac(rho_C, rho^*) lt.eq frac(2r, rho^*) . #qedhere $
 ]
 
 #theorem()[
@@ -160,16 +160,6 @@ Questo algoritmo è un esempio di *inapprossimabilità* o di *algoritmo tight*, 
 ]
 
 #proof()[
-  #align(center)[
-    #block(
-      fill: rgb("#9FFFFF"),
-      inset: 8pt,
-      radius: 4pt,
-
-      [*Ho chiesto a Siri di cercare "Dominating Set" e mi ha trovato "addome degli insetti" (_cit. Boldi_)*],
-    )
-  ]
-
   Usiamo il problema $NPC$ Dominating Set:
   - *input*:
     - grafo $G = (V,E)$;
@@ -205,7 +195,7 @@ Questo algoritmo è un esempio di *inapprossimabilità* o di *algoritmo tight*, 
   - se $rho^* = 1$ ottengo $1 lt.eq rho(S,k) lt.eq alpha$;
   - se $rho^* = 2$ ottengo $2 lt.eq rho(S,k) lt.eq 2 alpha$.
 
-  Nel primo caso devo rispondere _SI_ al problema di Dominating Set, nel secondo caso devo rispondere _NO_.
+  Nel primo caso devo rispondere _SI_ al problema di Dominating Set, nel secondo caso devo rispondere _NO_. I due insiemi sono ovviamente disgiunti.
 
-  Ma questi è un assurdo: avrei un algoritmo polinomiale per Dominating Set, quindi deve valore per forza $alpha gt.eq 2$
+  Ma questo è un assurdo: avrei un algoritmo polinomiale per Dominating Set, quindi deve valere per forza $alpha gt.eq 2$
 ]
