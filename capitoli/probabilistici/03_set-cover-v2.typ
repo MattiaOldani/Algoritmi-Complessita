@@ -22,29 +22,9 @@
 
 = Set Cover, il ritorno
 
-#align(center)[
-  #block(
-    fill: rgb("#9FFFFF"),
-    inset: 8pt,
-    radius: 4pt,
-
-    [*PODCAST: "Digital requiem"*],
-  )
-]
-
-#align(center)[
-  #block(
-    fill: rgb("#9FFFFF"),
-    inset: 8pt,
-    radius: 4pt,
-
-    [*Visto che stiamo dicendo delle puttanate (_cit. Boldi_)*],
-  )
-]
-
 == Concetti preliminari
 
-Vediamo *cose*: introduciamo qualche risultato preliminare che però non dimostriamo.
+Vediamo *cose*: introduciamo qualche risultato matematico preliminare che però non dimostriamo.
 
 #definition([Chain rule])[
   Legge comodissima nella probabilità, essa afferma che $ P(E_1 and dots and E_n) = P(E_1) dot P(E_2 bar.v E_1) dot dots dot P(E_n bar.v E_1, dots, E_(n-1)) . $
@@ -71,8 +51,6 @@ Vediamo *cose*: introduciamo qualche risultato preliminare che però non dimostr
 
 Le disuguaglianze che hanno questa forma sono dette *leggi di concentrazione*, e sono molto comode perché ci indicano la probabilità che una variabile aleatoria si discosti da un valore considerando la media di quella variabile. Notiamo inoltre come questa relazione sia *indipendente* da come è distribuita la variabile $XX$.
 
-Ad esempio, se $alpha$ assume un valore molto grande, la probabilità di trovare $XX$ oltre quel valore è molto bassa: infatti, mi sto discostando molto dal valore atteso e ho probabilità bassa di trovare qualcosa oltre quel valore.
-
 == Algoritmo probabilistico
 
 Avevamo già visto Set Cover, e come *metafora* avevamo usato quella degli spazi pubblicitari o degli abbonamenti di Milano: vogliamo scegliere dei pacchetti per coprire tutto un insieme universo spendendo il meno possibile.
@@ -91,14 +69,11 @@ Questo problema lo possiamo scrivere nei termini della *programmazione lineare i
 - *variabili*: $x_0, dots, x_(m-1)$ booleane che ci dicono se prendiamo o meno l'insieme $S_i bar.v i in m$;
 - *funzione obiettivo*: $min space w_0 x_0 + dots + w_(m-1) x_(m-1)$;
 - *vincoli*:
-  + $0 lt.eq x_i lt.eq 1 quad forall i in m$, ovvero ogni variabile deve essere $0$ oppure $1$;
-  + $sum_(i bar.v p in S_i) x_i gt.eq 1 quad forall p in U$, ovvero per ogni elemento dell'universo da coprire prendo gli insiemi che lo contengono e richiedo l'esistenza di una variabile che lo copre.
+  + $forall i in m quad 0 lt.eq x_i lt.eq 1$, ovvero ogni variabile deve essere $0$ oppure $1$;
+  + $forall p in U quad sum_(i bar.v p in S_i) x_i gt.eq 1$, ovvero per ogni elemento dell'universo da coprire prendo gli insiemi che lo contengono e richiedo l'esistenza di una variabile che lo copre.
 
 Chiamiamo questo problema $Pi$. Se rilassiamo $Pi$ sui numeri reali otteniamo un problema $hat(Pi)$ con risultato approssimato ma sicuramente migliore perché abbiamo ampliato lo spazio delle soluzioni ammissibili.
 
-/*
-Controlla il codice Python perché non sono sicuro dell'ammissibilità
-*/
 #align(center)[
   #pseudocode-list(title: [Arrotondamento aleatorio])[
     - *input*
@@ -121,12 +96,10 @@ Controlla il codice Python perché non sono sicuro dell'ammissibilità
 
 Questo algoritmo è molto semplice: lancio _"tante volte"_ la moneta con probabilità $hat(x)_i$ per decidere se inserire l'insieme $S_i$ nella copertura. Purtroppo, questo algoritmo non dà garanzie di dare una soluzione ammissibile, è improbabile ma potrebbe succedere. Se invece la soluzione data è ammissibile, non è detto che sia ottima. Uno sfigato praticamente.
 
-L'algoritmo di Karger era *GG* perché dava sempre una soluzione ammissibile (_visto che i tagli non sono soggetti a vincoli_) ma spesso dava anche l'ottimo.
-
-Qua abbiamo una $P > 0$ di restituire soluzioni non ammissibili, e, se per puro caso abbiamo una soluzione ammissibile, non sempre sarà ottima, ma menomale non lo sarà con bassa probabilità.
+L'algoritmo di Karger era *GG* perché dava sempre una soluzione ammissibile (_visto che i tagli non sono soggetti a vincoli_) ma spesso dava anche l'ottimo. Qua abbiamo una $P > 0$ di restituire soluzioni non ammissibili, e, se per puro caso abbiamo una soluzione ammissibile, non sempre sarà ottima, ma menomale non lo sarà con bassa probabilità.
 
 #theorem()[
-  L'algoritmo ha le seguenti proprietà:
+  L'algoritmo di arrotondamento aleatorio ha le seguenti proprietà:
   + produce una soluzione ammissibile con probabilità $ P gt.eq 1 - e^(-k) ; $
   + per ogni $alpha gt.eq 1$ vale $ P("TA" gt.eq alpha (k + ln(n))) lt.eq 1/alpha $ con $"TA"$ tasso di approssimazione della soluzione.
 ]

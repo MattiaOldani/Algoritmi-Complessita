@@ -30,13 +30,13 @@ Il primo problema che vediamo risolto con algoritmi probabilistici è il problem
 - *funzione obiettivo*: vogliamo valutare la quantità $k = abs({e in E bar.v e sect X eq.not emptyset.rev and e sect X^C eq.not emptyset.rev})$, ovvero il numero di lati che hanno un vertice in $X$ e l'altro nel suo complemento; in poche parole, se disegno $G$, voglio contare il numero di lati che fanno da ponte dalla zona $X$ alla zona $X^C$;
 - *tipo*: $min$.
 
-Il problema è $NPOC$ anche se non sembra.
+Anche se non sembra, anche questo problema è $NPOC$.
 
 #lemma()[
   Il taglio minimo è $lt.eq$ del grado minimo dei vertici.
 ]
 
-Questo è un bound molto molto ampio: unendo due cricche $K_n$ e $K_m$ con un lato, il taglio minimo vale $k = 1$, che è molto più piccolo del grado minimo $n-1$ o $m-1$.
+Questo è un bound molto molto ampio: ad esempio, unendo due cricche $K_n$ e $K_m$ con un lato, il taglio minimo vale $k = 1$, che è molto più piccolo del grado minimo $n-1$ o $m-1$.
 
 Prima di vedere l'algoritmo risolutivo per mincut diamo la definizione di *contrazione di grafi*: dato un grafo $G$, la contrazione $G arrow.b e$ sul lato $e$ si calcola con i seguenti passi:
 - eliminare il lato $e$ dal grafo;
@@ -79,7 +79,7 @@ In particolare, il grado minimo di $G_i$ è $gt.eq k^*$: infatti, se avessi un t
 
 Sia ora $m_i$ il numero di lati di $G_i$, allora $ 2 m_i = sum_(v in V_G_i) d_G_i (v) , $ ma il numero di vertici in $G_i$ è $n - i + 1$ e sappiamo che il grado minimo è $gt.eq$ della dimensione ottima, quindi $ 2 m_i gt.eq (n-i+1) k^* arrow.long.double m_i gt.eq frac(k^* (n-i+1), 2) . $
 
-Sia $E_i$ l'evento che ci dice se all'$i$-esima iterazione *NON* contraiamo uno dei lati tagliati dal taglio minimo. Dio ci ha detto qual è il taglio minimo, sappiamo quali sono i lati del taglio minimo. Vogliamo sapere la probabilità che all'$i$-esimo passo noi contraiamo uno dei lati _"preziosi"_.
+Sia $E_i$ l'evento che ci dice se all'$i$-esima iterazione *NON* contraiamo uno dei lati tagliati dal taglio minimo. Dio ci ha detto qual è il taglio minimo, sappiamo quali sono i lati del taglio minimo.
 
 #lemma()[
   Vale $ P(E_i bar.v E_1, dots, E_(i-1)) gt.eq frac(n-i-1,n-i+1) . $

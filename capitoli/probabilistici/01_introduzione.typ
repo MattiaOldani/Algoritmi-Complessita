@@ -26,7 +26,7 @@ Introduciamo gli *algoritmi probabilistici*: quello che cambia, rispetto a quant
 
 Gli *algoritmi deterministici* che abbiamo usato prendevano in input $x in I_Pi$ e restituivano un output $y in O_Pi$ in maniera totalmente deterministica.
 
-Gli *algoritmi probabilistici* hanno la possibilità di pescare da una *sorgente* casuale, che estrae bit con probabilità uniforme. In termini di MdT, la sorgente casuale è un nastro casuale che contiene solo $0$ e $1$. L'algoritmo non è più deterministico: se conoscessimo a prescindere l'input e la porzione di _"nastro random"_ visitata potremmo simulare deterministicamente il comportamento, ma visto che non lo conosciamo il processo non è deterministico.
+Gli *algoritmi probabilistici* hanno la possibilità di pescare da una *sorgente* casuale, che estrae bit con probabilità uniforme. In termini di MdT, la sorgente casuale è un nastro casuale che contiene $0$ e $1$. L'algoritmo non è più deterministico: se conoscessimo a prescindere l'input e la porzione di _"nastro random"_ visitata potremmo simulare deterministicamente il comportamento, ma visto che non lo conosciamo il processo non è deterministico.
 
 Anche l'output viene modificato: infatti, non abbiamo più un output specifico ma abbiamo una distribuzione di probabilità $P(y bar.v x)$ che mi descrive la probabilità di avere l'output $y$ sapendo che è stato inserito in input $x$.
 

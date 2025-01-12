@@ -22,25 +22,13 @@
 
 = MAX $E_k$-SAT [$k gt.eq 3$]
 
-#align(center)[
-  #block(
-    fill: rgb("#9FFFFF"),
-    inset: 8pt,
-    radius: 4pt,
-
-    [*La lezione finirà prima, ho una perdita a casa e vorrei evitare la situazione che mi è successa tempo fa: sono dovuto tornare a casa in taxi perché il gatto aveva aperto il rubinetto ma il tappo era giù, e dalle videocamere vedevo l'acqua che saliva (_cit. Boldi_)*],
-  )
-]
-
 Forse uno dei problemi più famosi del mondo nella sua versione di decisione, esso è definito da:
 - *input*: formula CNF in cui ogni clausola contiene esattamente $k$ letterali;
-- *soluzioni ammissibili*: assegnamenti di valori di verità alle variabili che compaiono nell'input;
-- *funzione obiettivo*: numero di clausole soddisfatte (_true_) dall'assegnamento;
+- *soluzioni ammissibili*: assegnamento di valori di verità alle variabili che compaiono nell'input;
+- *funzione obiettivo*: numero di clausole soddisfatte dall'assegnamento;
 - *tipo*: $max$.
 
-Le *formule CNF* sono congiunzioni di _"pezzi"_ $ P_1 and dots and P_t $ e ogni _"pezzo"_ $P_i$ è una disgiunzione di $k$ letterali $ l_1 or dots or l_k , $ che possiamo trovare positivi o negativi.
-
-I pezzi sono le *clausole*, che contengono appunto i *letterali*.
+Le *formule CNF* sono congiunzioni di _"pezzi"_ $ P_1 and dots and P_t $ e ogni _"pezzo"_ $P_i$ è una disgiunzione di $k$ letterali $ l_1 or dots or l_k , $ che possiamo trovare positivi o negativi. I (_droga armi_) pezzi (_che cadono_) sono le *clausole*, che contengono appunto i *letterali*.
 
 Una proprietà interessante delle CNF è che ogni formula logica che coinvolge variabili booleane può essere trasformata in una CNF normale e poi in una $E_k$-CNF.
 
@@ -85,17 +73,7 @@ Vediamo quindi un algoritmo probabilistico per questo problema.
 
   Uso la linearità del valore atteso, quindi $ EE[T] = 1/2^n sum_b_1 dots sum_b_n sum_(j=1)^t EE[C_j bar.v X_1 = b_1, dots, X_n = b_n] . $
 
-  Guardiamo il valore atteso. Sto assegnando un valore di verità a tutte le variabili, ma così facendo so esattamente il valore di $C_j$: dipende infatti dai valori che ho appena assegnato alle variabili. Come dice Boldi:
-
-  #align(center)[
-    #block(
-      fill: rgb("#9FFFFF"),
-      inset: 8pt,
-      radius: 4pt,
-
-      [*Non è una cosa a capocchia*],
-    )
-  ]
+  Guardiamo il valore atteso. Sto assegnando un valore di verità a tutte le variabili, ma così facendo so esattamente il valore di $C_j$: dipende infatti dai valori che ho appena assegnato.
 
   Supponiamo di guardare la $j$-esima clausola, formata da $k$ variabili. Per avere questa clausola falsa, devo assegnare _VERO_ a tutte le variabili negative e _FALSO_ a tutte le variabili positive, visto che abbiamo una disgiunzione. Esiste quindi un solo modo per assegnare queste $k$ variabili per avere la clausola falsa. Le altre $n - k$ variabili le assegno a caso.
 
@@ -183,37 +161,11 @@ Se calcoliamo $Delta_1$ (_o l'altra quantità_) come differenza tra il valore do
 
 Gli insiemi $Delta_D$ contano quante clausole andremo a soddisfare con la scelta fatta.
 
-*IN SINTESI*, cosa abbiamo fatto oggi:
+*IN SINTESI*:
 - siamo partiti da un algoritmo probabilistico con una buona _"mira"_ nel rendere vere le clausole;
 - abbiamo deciso di fissare qualche variabile garantendo comunque la buona _"mira"_;
 - abbiamo fatto vedere che possiamo trovare deterministicamente questo assegnamento.
 
-Siamo passati dal probabilistico al non-probabilistico, mantenendo sempre dei buoni bound sul numero di clausole soddisfatte.
+Parliamo brevemente del fattore di approssimazione dell'algoritmo probabilistico: questo sarebbe $ alpha = frac(t, frac(2^k - 1, 2^k)t) = frac(2^k, 2^k -1) $ ma vista la natura probabilistica dell'algoritmo, il fattore di approssimazione andrebbe calcolato utilizzando le probabilità, e questo è abbastanza sbatti.
 
-#align(center)[
-  #block(
-    fill: rgb("#9FFFFF"),
-    inset: 8pt,
-    radius: 4pt,
-
-    [*Vi racconto i miei patemi interiori, sono entrato in un trip magico per cercare dei tool di visualizzazione (_cit. Boldi_)*],
-  )
-]
-
-In statistica il valore atteso è praticamente inutile: una singola esecuzione di un algoritmo potrebbe essere molto sfortunata e darci un valore più piccolo del valore atteso che abbiamo calcolato teoricamente.
-
-Il fattore di approssimazione dell'algoritmo probabilistico sarebbe $ frac(t, frac(2^k - 1, 2^k)t) = frac(2^k, 2^k -1) $ ma è appunto un algoritmo probabilistico, quindi questo bound andrebbe calcolato con le probabilità.
-
-Tutto ciò è abbastanza sbatti, però noi abbiamo un algoritmo deterministico, ottenuto dalla re-randomizzazione.
-
-#align(center)[
-  #block(
-    fill: rgb("#9FFFFF"),
-    inset: 8pt,
-    radius: 4pt,
-
-    [*NOOOOO, DOVEVO REGISTRARE (_cit. Boldi_)*],
-  )
-]
-
-Ora che abbiamo un algoritmo deterministico, possiamo dire che il fattore di approssimazione è quello calcolato al passo precedente.
+Ricordandoci però che abbiamo ottenuto un algoritmo deterministico usando la de-randomizzazione, possiamo affermare che il fattore di approssimazione è quello calcolato poco fa.
