@@ -25,10 +25,10 @@
 Non abbiamo visto il problema *MAX Independent Set* durante il corso, quindi vediamo rapidamente la sua definizione formale:
 - *input*: grafo $G = (V,E)$ non orientato;
 - *soluzione ammissibile*: un *insieme indipendente*, ovvero una *anti-cricca*, un sottoinsieme $X subset.eq V$ tale che $ binom(X,2) sect E = emptyset.rev ; $
-- *funzione obiettivo*: $abs(X)$
-- *tipo*: $max$
+- *funzione obiettivo*: $abs(X)$;
+- *tipo*: $max$.
 
-Stiamo cercando un insieme di vertici di grandezza massima che contiene vertici non collegati tra loro. Ovviamente, questo è un problema $NPOC$.
+Ovviamente, questo è un problema $NPOC$.
 
 #theorem()[
   Per ogni $epsilon > 0$ MAX Independent Set non è $(2 - epsilon)$-approssimabile.
@@ -39,16 +39,6 @@ Non riusciamo quindi ad approssimare MAX Independent Set meglio di $2$.
 #proof()[
   Sia $L$ un linguaggio $NPC$ a nostra scelta, ovvero $ L in pcprq(r(n) in O(log(n)), q in NN) . $
 
-  #align(center)[
-    #block(
-      fill: rgb("#9FFFFF"),
-      inset: 8pt,
-      radius: 4pt,
-
-      [*Gemini voleva dire la sua (_cit. Boldi_)*],
-    )
-  ]
-
   Fissato $z in 2^*$, il nostro verificatore:
   - genera una sequenza di bit random $R in 2^(r(abs(z)))$;
   - genera delle posizioni $i_1^(z,R), dots, i_q^(z,R)$;
@@ -56,7 +46,7 @@ Non riusciamo quindi ad approssimare MAX Independent Set meglio di $2$.
 
   Tutti questi dati formano una $z$-*configurazione*: essa è una coppia $ (R, {i_1^(z,R):b_1, dots, i_q^(z,R):b_q}) . $ Il numero di queste configurazioni dipende dal numero di scelte di $R$ e, fissata una di queste, anche dal numero di scelte dell'oracolo.
 
-  Costruiamo $G_z$ un grafo non orientato:
+  Costruiamo $G_z$ un grafo non orientato, dove:
   - i vertici sono le $z$-configurazioni *accettanti*, ovvero le configurazioni che mi portano ad accettare $z$ nel linguaggio $L$;
   - i lati tra due vertici $v$ e $v'$ esistono se e solo se:
     - $R = R'$ oppure
@@ -88,7 +78,7 @@ Vediamo la dimostrazione dei due lemmi che abbiamo usato nella dimostrazione.
 ]<secondo-lemma-mis>
 
 #proof()[
-  Per assurdo supponiamo che $S$ sia un Independent Set di $G_z$ con cardinalità $> 2^(r(abs(z)) - 1)$.
+  Per assurdo, supponiamo che $S$ sia un Independent Set di $G_z$ con cardinalità $> 2^(r(abs(z)) - 1)$.
 
   $S$ contiene tutti nodi che hanno $R$ diversi tra loro e, considerando le risposte dell'oracolo, a parità di indice ho sicuramente la stessa risposta, altrimenti avremmo un arco tra i due vertici e quindi non sarebbe un Independent Set.
 

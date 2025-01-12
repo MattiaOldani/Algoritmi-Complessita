@@ -26,21 +26,21 @@
 
 Iniziamo con un argomento *molto* (_enfasi sul molto_) divertente, il *teorema PCP*.
 
-Negli anni $'70$ nasce la *teoria della complessità strutturale*: essa vuole risolvere problemi che non erano ancora stati risolti dividendoli in classi, così da usare soluzioni più astratte e generali dei singoli problemi. La domanda cruciale alla quale cercava (_e cerca ancora oggi_) risposta è la famosissima $ P = NP . $ Una domanda molto ambiziosa, alla quale ancora oggi non abbiamo una soluzione.
+Negli anni $'70$ nasce la *teoria della complessità strutturale*: essa vuole risolvere problemi che non erano ancora stati risolti dividendoli in classi, così da usare soluzioni più astratte e generali dei singoli problemi. La domanda cruciale e molto ambiziosa alla quale cercava (_e cerca ancora oggi_) risposta è la famosissima $ P = NP . $
 
 Inoltre, purtroppo per noi che dobbiamo studiarle, esiste uno zoo di classi di complessità, e tra queste conosciamo anche qualche relazione, ma le relazioni più importanti e interessanti non sono ancora state risolte (_vedi P e NP_).
 
 Dal *Teorema di Cook* del $1972$ (_credo SAT problema NPC_) l'unico gioiello della teoria della complessità è il *teorema PCP* del $1998$, ideato da Arora e Safra.
 
-Ma andiamo per ordine, prima del teorema ne vedremo di acqua passare sotto al ponte.
+Ma andiamo per ordine, prima del teorema ne dobbiamo mangiare di pasta con il tonno.
 
-Torniamo nel mondo dei problemi di decisione. Una cosa molto bella che possiamo fare è trasformare il problema di decisione dato in un linguaggio $L subset.eq 2^*$. Ora, dato un input $x in 2^*$, ci chiediamo se esso appartenga o meno a $L$. Abbiamo cambiato il problema, è diventato un problema di appartenenza ad un linguaggio, ma che non cambia niente sull'esito del problema.
+Torniamo nel mondo dei problemi di decisione. Una cosa molto bella che possiamo fare è trasformare il problema di decisione in un linguaggio $L subset.eq 2^*$. Ora, dato un input $x in 2^*$, ci chiediamo se esso appartenga o meno a $L$. Abbiamo cambiato il problema, è diventato un problema di appartenenza ad un linguaggio, ma che non cambia niente sull'esito del problema.
 
 L'algoritmo che decide questa appartenenza è un *decisore*, che noi rappresentiamo con una MdT, l'oggetto più formale e astratto che rappresenta un algoritmo deterministico.
 
-Le MdT hanno forme alternative però: una versione particolare è la *MdT con oracolo*.
+Le MdT hanno forme alternative: una di queste molto particolare è la *MdT con oracolo*.
 
-L'input di queste macchine è sempre $x in 2^*$ e l'output è sempre una risposta _SI/NO_. Questa macchina, inoltre, può accedere ad un *oracolo* $w in 2^*$ durante la sua esecuzione, una stringa binaria. La risposta quindi dipende non solo dall'input, ma anche dall'oracolo, ovvero la MdT diventa $M(x,w)$. L'accesso all'oracolo non è _diretto_, ma la MdT usa un nastro di supporto, detto *nastro delle query*. Ogni volta che la MdT vuole un elemento della stringa dell'oracolo scrive sul nastro delle query la posizione (_in binario_) della posizione da interrogare e la macchina, andando nello *stato di query* $q_?$, estrae l'elemento richiesto.
+L'input di queste macchine è sempre $x in 2^*$ e l'output è sempre una risposta _SI/NO_. Questa macchina, però, può accedere ad un *oracolo* $w in 2^*$ durante la sua esecuzione, una stringa binaria. La risposta quindi dipende non solo dall'input, ma anche dall'oracolo, ovvero la MdT diventa $M(x,w)$. L'accesso all'oracolo non è _diretto_, ma la MdT usa un nastro di supporto, detto *nastro delle query*. Ogni volta che la MdT vuole un elemento della stringa dell'oracolo scrive sul nastro delle query la posizione (_in binario_) della posizione da interrogare e la macchina, andando nello *stato di query* $q_?$, estrae l'elemento richiesto.
 
 Pensiamo all'oracolo $w$ come ad una dimostrazione: noi abbiamo in input $x$ e vogliamo verificare che $x$ abbiamo una certa proprietà usando delle informazioni aggiuntive dell'oracolo $w$.
 
@@ -52,7 +52,7 @@ Vista questa natura, queste macchine sono dette *verificatori*.
 
 In poche parole, la MdT verifica se l'oracolo sta dando una dimostrazione credibile oppure no.
 
-Come vedremo nel seguente teorema, queste MdT con oracolo non sono altro che delle MdT non deterministiche: infatti, quando le MdT non deterministiche sdoppiavano il loro comportamento noi possiamo vederlo in una MdT con oracolo come la richiesta di query dall'oracolo.
+Come vedremo nel seguente teorema, queste MdT con oracolo non sono altro che delle MdT non deterministiche: infatti, quando le MdT non deterministiche sdoppiavano il loro comportamento, noi possiamo vederlo in una MdT con oracolo come la richiesta di query dall'oracolo.
 
 #theorem()[
   Un linguaggio $L subset.eq 2^*$ sta in $NP$ se esiste una MdT con oracolo $V$ tale che:
@@ -62,7 +62,7 @@ Come vedremo nel seguente teorema, queste MdT con oracolo non sono altro che del
 
 L'oracolo fa il ruolo del *non determinismo*. Il secondo punto rappresenta _lo sbatti_ del non determinismo: comodo che per vedere l'appartenenza devo avere almeno un ramo vero, scomodo che per vedere la non appartenenza devo avere tutti i rami falsi.
 
-Espandiamo ancora la nostra macchina: introduciamo i *verificatori probabilistici*. Essi aggiungono un ingrediente, dei *bit random*.
+Espandiamo ancora la nostra macchina: introduciamo i *verificatori probabilistici*. Essi aggiungono un ingrediente, dei *bit random* (_ma dai_).
 
 Come prima, abbiamo l'input $x in 2^*$ e l'oracolo $w in 2^*$ al quale la MdT ha accesso. In questa versione estesa la MdT può accedere anche ad una *sorgente di bit random*. Sulla base di queste tre variabili la MdT deve rispondere _SI/NO_.
 
@@ -101,7 +101,7 @@ Vediamo come questo passaggio renda _"più potente"_ la componente randomica: pa
 Quello che è sorprendente è quel $O(1)$: stiamo dicendo che, dato un linguaggio, esiste un numero (_e anche una funzione logaritmica, ma quella chissene_) perfetto per quel linguaggio e tale che ogni stringa di input viene accettata (_almeno un ramo_) o rifiutata (_ogni ramo_) entro quel numero di query.
 
 Per verificare che è un numero va bene per un dato problema bisogna costruire un verificatore che:
-- $forall x in 2^*$ allora $V$ usa al massimo quelle risorse;
+- $forall x in 2^*$ allora $V$ usa al massimo le risorse definite dalle funzioni $r$ e $q$1;
 - se $x in L$ allora $V$ accetta con probabilità $1$ qualsiasi sia la stringa di bit randomici;
 - se $x in.not L$ allora $V$ rifiuta con probabilità $gt.eq 1/2$ qualsiasi sia l'oracolo.
 
@@ -150,7 +150,7 @@ Immaginiamo un verificatore $ V in pcprq(r(n) in O(log(n)), q in NN) $ per $NP$.
 
 La quantità $w_(i_t)^((R,x))(w_(i_1), dots, w_(i_(t-1)))$ indica il bit estratto dall'oracolo sapendo $R$, $x$ e tutti i bit estratti precedentemente. Quello che si va a creare è un mega albero di computazione.
 
-Questa proprietà si chiama *adattività*, che caratterizza un *verificatore adattivo*. Quest'ultimo è un verificatore le cui risposte dell'oracolo dipendono sì dai bit random e dall'input ma anche da quello che abbiamo ottenuto prima come estrazioni. Ma a noi non ci piace il verificatore adattivo.
+Questa proprietà si chiama *adattività*, che caratterizza un *verificatore adattivo*. Quest'ultimo è un verificatore le cui risposte dell'oracolo dipendono sì dai bit random e dall'input ma anche da quello che abbiamo ottenuto prima come estrazioni. Ma a noi non piace un verificatore adattivo.
 
 L'altezza dell'albero mostrato sopra è $q$, ottenuto facendo una serie di richieste all'oracolo. Il numero totale di richieste è $ overline(q) = 2^(q-1) + 2^(q-2) + ... + 2^1 + 2^0 = sum_(i=0)^(q-1) 2^i . $
 

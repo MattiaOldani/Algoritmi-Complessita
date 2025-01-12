@@ -22,7 +22,7 @@
 
 = Inapprossimabilità di MAX $E_k$-SAT
 
-Vediamo come PCP può aiutarci a dimostrare l'inapprossimabilità di alcuni problemi. Partiamo con MAX $E_k$-SAT, un problema che avevamo introdotto parlando di algoritmi probabilistici.
+Vediamo come il teorema PCP può aiutarci a dimostrare l'inapprossimabilità di alcuni problemi. Partiamo con MAX $E_k$-SAT, che avevamo introdotto parlando di algoritmi probabilistici.
 
 #lemma()[
   Ogni $k$-CNF ($k gt.eq 3$) con $t$ clausole si può trasformare in una $3$-CNF con $(k-2)t$ clausole, preservando la soddisfacibilità.
@@ -57,7 +57,7 @@ Questo teorema ci dice che non possiamo avvicinarci a $1$ quanto vogliamo.
     Nell'esempio della lezione scorsa, dove viene spiegato il PCP, la CNF risultante è $ Phi = (w_3 or w_15 or w_27) and (w_3 or not w_15 or not w_27) and (not w_3 or not w_15 or not w_27) . $
   ]
 
-  La formula $Psi_(z,R)$ è una $q$-CNF con al massimo $2^q$ clausole. Trasformo $Psi_(z,R)$ in una $3$-CNF $phi_(z,R)$ con al massimo $q 2^q$ clausole, per il lemma precedente. Consideriamo, per semplicità, che abbia esattamente $q 2^q$.
+  La formula $Psi_(z,R)$ è una $q$-CNF con al massimo $2^q$ clausole, ovvero il numero combinazioni di $q$ letterali. Trasformo $Psi_(z,R)$ in una $3$-CNF $phi_(z,R)$ con al massimo $q 2^q$ clausole, per il lemma precedente. Consideriamo, per semplicità, che abbia esattamente $q 2^q$.
 
   Definiamo la formula $ Phi_z = and.big_(R in 2^(abs(z))) phi_(z,R) . $
 
@@ -70,8 +70,8 @@ Questo teorema ci dice che non possiamo avvicinarci a $1$ quanto vogliamo.
   Do in pasto questa formula al mio algoritmo per MAX $E_3$-SAT.
 
   Abbiamo due casi:
-  - se $z in L$ allora $exists w$ che fa accettare $V$ con probabilità $1$. Abbiamo visto che la stringa $w$ è un assegnamento di variabili. Ma quindi $w$ è esattamente la stringa che rende vera $Phi_z$, ovvero rende vere tutte le formule singole di $Phi_z$ con probabilità $1$. In questo caso, sono soddisfatte $q 2^q 2^(r(abs(z)))$ clausole;
-  - se $z in.not L$ allora $forall w$ il nostro $V$ rifiuta con probabilità $gt.eq 1/2$. Vuol dire che comunque io assegno, meno della metà dei $phi_(z,R)$ che compongono $Phi_z$ risultato soddisfatti. Andiamo a quantificare il massimo numero di clausole soddisfatte. Esso è $ "DA CHIEDERE ASSOLUTAMENTE" = q 2^q 2^(r(abs(z))) - frac(2^r(abs(z)), 2) . $
+  - se $z in L$ allora $exists w$ che fa accettare $V$ con probabilità $1$, e sono soddisfatte $q 2^q 2^(r(abs(z)))$ clausole;
+  - se $z in.not L$ allora $forall w$ il nostro $V$ rifiuta con probabilità $gt.eq 1/2$. Vuol dire che comunque io assegno, meno della metà dei $phi_(z,R)$ che compongono $Phi_z$ risultato soddisfatti. Andiamo a quantificare il massimo numero di clausole soddisfatte. Esso è $ underbracket(frac(q 2^q 2^(r(abs(z))), 2), "metà intere") + underbracket(frac(2^(r(abs(z))),2) (q 2^q - 1), "DA CHIEDERE") = q 2^q 2^(r(abs(z))) - frac(2^r(abs(z)), 2) . $
 
   Il nostro algoritmo è approssimato, quindi:
   - se $z in L$ ci verrà dato un risultato $ gt.eq frac(q 2^q 2^(r(abs(z))), 1 + epsilon) ; $
@@ -81,50 +81,5 @@ Questo teorema ci dice che non possiamo avvicinarci a $1$ quanto vogliamo.
 
   Siano $A = q 2^q$ e $B = 2^(r(abs(z)))$. Per assurdo sia $ A B - B/2 > frac(A B, 1 + epsilon) , $ ovvero per assurdo i due insiemi si sovrappongono. Ma allora $ A B + A B epsilon - B/2 - B/2 epsilon - A B > 0 \ epsilon (A B - B/2) - B/2 > 0 \ 1/(2A) (A B - B/2) - B/2 > 0 \ B/2 - B/(4A) - B/2 > 0 \ -B/(4A) > 0 $ che è impossibile visto che stiamo considerando solo quantità positive.
 
-  #align(center)[
-    #block(
-      fill: rgb("#9FFFFF"),
-      inset: 8pt,
-      radius: 4pt,
-
-      [*Aspetta aspetta, ho fatto una cazzata, scusa scusa. Menomale che è venuto impossibile sennò mi sarei sparato (_cit. Boldi_)*],
-    )
-  ]
-
   Ma allora i due insiemi non si sovrappongono, quindi riesco a decidere se $z$ appartiene o meno a $L$ in tempo polinomiale, ma questo non è possibile perché $P eq.not NP$.
-]
-
-#align(center)[
-  #block(
-    fill: rgb("#9FFFFF"),
-    inset: 8pt,
-    radius: 4pt,
-
-    [*Come vedete, PCP è un kalashnikov (_cit. Boldi_)*],
-  )
-]
-
-Tutte le dimostrazioni con PCP saranno così:
-- ho linguaggio con un verificatore $V$;
-- modifico $L$ per darlo in pasto al papabile algoritmo approssimante;
-- per PCP non va bene.
-
-#align(center)[
-  #block(
-    fill: rgb("#9FFFFF"),
-    inset: 8pt,
-    radius: 4pt,
-
-    [*Di là applaudono alla grande, ci stiamo avvicinando a Natale (_cit. Boldi_)*],
-  )
-]
-
-#align(center)[
-  #block(
-    fill: rgb("#9FFFFF"),
-    inset: 8pt,
-    radius: 4pt,
-
-    [*Cioè tu prendi gli appunti cosi belli mentre parlo, ma sei un mago, pazzo (_cit. Boldi_)*],
-  )
 ]
