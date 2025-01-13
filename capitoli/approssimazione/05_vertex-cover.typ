@@ -65,9 +65,7 @@ Il *pricing* è un insieme di prezzi $ (p_e)_(e in E) . $ Un pricing è *equo* s
 
   Per definizione di equità vale $ sum_(e in E and i in e) p_e lt.eq w_i . $
 
-  Sommiamo su tutti gli $i in X^*$ quindi $ sum_(i in X^*) sum_(e in E and i in e) p_e lt.eq sum_(e in E) p_e lt.eq sum_(i in X^*) w_i = w^* . $
-
-  La prima disuguaglianza è vera perché selezionando tutti i vertici nella soluzione ottima $X^*$ e poi tutti i lati che incidono su questi vertici potrei sommare più volte lo stesso lato.
+  Sommiamo su tutti gli $i in X^*$ quindi $ sum_(e in E) p_e lt.eq sum_(i in X^*) sum_(e in E and i in e) p_e lt.eq sum_(i in X^*) w_i = w^* . qedhere $
 ]
 
 Data un pricing, esso è *stretto* sul vertice $i$ se e solo se $ sum_(e in E and i in e) p_e < w_(i) . $ È una proprietà che vale su un vertice, non so tutto il grafo. Questa proprietà afferma che il vertice $i$ non è contento di quello che riceve, non riceve quello che vuole.
@@ -148,4 +146,4 @@ L'algoritmo che abbiamo visto non vuole avere lati con entrambi i vertici incide
   Vediamo $ frac(w,w^*) lt.eq_(l 2) frac(2 sum_(e in E) p_e, w^*) lt.eq_(l 1) frac(2 sum_(e in E) p_e, sum_(e in E) p_e) = 2 . qedhere $
 ]
 
-Non sappiamo molto di più: non sappiamo se possiamo andare meglio di $2$, ma sappiamo che esiste un PTAS, ovvero non si conosce una $gamma$-approssimazione con $gamma < 2$. Siamo quindi in un caso di inapprossimabilità, ci sarà un minimo tasso ma non sappiamo quanto è.
+Non sappiamo molto di più: non sappiamo se possiamo andare meglio di $2$, ma sappiamo che per questo problema non possiamo scrivere un PTAS.

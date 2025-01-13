@@ -59,10 +59,14 @@ Prima di vedere la PD applicata a Knapsack, introduciamo il concetto di *pseudo-
     return true
     ```
   ]
+]
 
-  Il ciclo `for` viene eseguito $O(x)$ volte. Quindi l'algoritmo è polinomiale? *NO*.
+Il ciclo `for` viene eseguito $O(x)$ volte. Quindi l'algoritmo è polinomiale? *NO*. Il concetto di polinomialità deve essere inteso nella lunghezza dell'input, non nel valore dell'input. Questo perché avendo un algoritmo polinomiale nel valore dell'input, se quest'ultimo viene raddoppiato allora l'algoritmo si comporta ancora bene, ma se raddoppia la lunghezza dell'input il valore cresce spropositatamente e l'algoritmo inizia a fare fatica.
 
-  Dobbiamo dire se è polinomiale anche nei bit dell'input, che sono logaritmici in $x$. Ma una cosa lineare nel logaritmo è esponenziale (????).
+Infatti, possiamo scrivere $ x = 2^(log_2(x)), $ quindi la lunghezza di $x$ è esponenziale nel mio input.
+
+#lemma()[
+  Se un algoritmo è polinomiale nella lunghezza dell'input allora lo è anche nel valore dell'input, ma non vale il viceversa.
 ]
 
 Questo algoritmo è chiamato pseudo-polinomiale, ovvero un algoritmo che è lineare nel tempo ma esponenziale nella lunghezza dell'input (????).

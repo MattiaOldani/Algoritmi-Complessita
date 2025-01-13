@@ -61,6 +61,6 @@ Sappiamo che $ log(binom(A,B)) tilde B log(A/B) + (A-B) log(frac(A, A-B)) . $
 
 Quindi $ Z_n &= log(binom(u+n-1, n)) tilde n log(frac(u + n - 1, n)) + (u-1) underbracket(log(frac(u+n-1, u-1)), = 0 "trascurabile se" n lt.double u) = \ &= n log((u/n)(1 + n/u - 1/u)) = \ &= n log(u/n) + n log(1 + n/u - 1/u) = \ &= "sappiamo che" x approx log(1+x) = \ &approx n log(u/n) + n(n/u - 1/u) = \ &lt.eq n log(u/n) + n^2/u . $
 
-Ricordiamoci che $ D_n = 2n + n ceil(log(u/n)) + o(n) . $ Ma allora $D_n = O(Z_n)$. Non abbiamo una struttura succinta ma almeno abbiamo lo stesso ordine di grandezza, quindi è una *struttura compatta*.
+Assumiamo, per semplicità, che $n lt.eq sqrt(u)$, ma allora $ Z_n = n log(u/n) + 1 . $
 
-Se assumiamo che $n lt.eq sqrt(u)$ allora la struttura è succinta.
+Ricordiamoci che $ D_n = 2n + n ceil(log(u/n)) + o(n) . $ Ma allora $D_n = O(Z_n)$. Non abbiamo una struttura succinta ma almeno abbiamo lo stesso ordine di grandezza, quindi è una *struttura compatta*.

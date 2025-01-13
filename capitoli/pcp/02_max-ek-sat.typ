@@ -28,9 +28,7 @@ Vediamo come il teorema PCP può aiutarci a dimostrare l'inapprossimabilità di 
   Ogni $k$-CNF ($k gt.eq 3$) con $t$ clausole si può trasformare in una $3$-CNF con $(k-2)t$ clausole, preservando la soddisfacibilità.
 ]
 
-Questo lemma in realtà è un se e solo se: se rendo vera una $k$-CNF allora lo stesso assegnamento rende vera la $3$-CNF (_assegnando correttamente le variabili ausiliarie_). Il contrario vale se limitiamo la soddisfacibilità alle sole variabili non ausiliarie.
-
-Vediamo ora il teorema molto pesante che dimostreremo oggi.
+Questo lemma in realtà è un se e solo se: se rendo vera una $k$-CNF allora lo stesso assegnamento rende vera la $3$-CNF (_assegnando correttamente le variabili ausiliarie, se serve_). Il contrario vale se limitiamo la soddisfacibilità alle sole variabili non ausiliarie: le variabili ausiliarie vengono inserite positive e negative, quindi una clausole che contiene una variabile positiva avrà una clausola associata con la variabile negativa che, per essere soddisfatta, si deve affidare alle variabili che avevamo già all'inizio.
 
 #theorem()[
   Vale $ forall k gt.eq 3 quad exists epsilon > 0 $ tale che MAX $E_k$-SAT non è $(1+epsilon)$-approssimabile.
@@ -71,7 +69,7 @@ Questo teorema ci dice che non possiamo avvicinarci a $1$ quanto vogliamo.
 
   Abbiamo due casi:
   - se $z in L$ allora $exists w$ che fa accettare $V$ con probabilità $1$, e sono soddisfatte $q 2^q 2^(r(abs(z)))$ clausole;
-  - se $z in.not L$ allora $forall w$ il nostro $V$ rifiuta con probabilità $gt.eq 1/2$. Vuol dire che comunque io assegno, meno della metà dei $phi_(z,R)$ che compongono $Phi_z$ risultato soddisfatti. Andiamo a quantificare il massimo numero di clausole soddisfatte. Esso è $ underbracket(frac(q 2^q 2^(r(abs(z))), 2), "metà intere") + underbracket(frac(2^(r(abs(z))),2) (q 2^q - 1), "DA CHIEDERE") = q 2^q 2^(r(abs(z))) - frac(2^r(abs(z)), 2) . $
+  - se $z in.not L$ allora $forall w$ il nostro $V$ rifiuta con probabilità $gt.eq 1/2$. Andiamo a quantificare il massimo numero di clausole soddisfatte. Dividiamo l'insieme $2^(r(abs(z)))$ in due insiemi: il primo di questi accetta la stringa $z$, il secondo invece non accetta la stringa $z$, ma per non accettare una stringa basta che una clausola non sia soddisfatta, quindi al massimo ho $ underbracket(frac(2^(r(abs(z))), 2) q 2^q, "metà accetto") + underbracket(frac(2^(r(abs(z))),2) (q 2^q - 1), "metà non accetto") = 2^(r(abs(z)))/2 (q 2^q + q 2^q - 1) = q 2^q 2^(r(abs(z))) - frac(2^r(abs(z)), 2) $ clausole soddisfatte.
 
   Il nostro algoritmo è approssimato, quindi:
   - se $z in L$ ci verrà dato un risultato $ gt.eq frac(q 2^q 2^(r(abs(z))), 1 + epsilon) ; $

@@ -73,7 +73,7 @@ Vista l'operazione di contrazione, abbiamo che:
 - $G_i$ ha $n - i + 1$ vertici (_in ogni iterazione perdiamo un vertice_);
 - $G_i$ ha $lt.eq m - i + 1$ lati (_in ogni iterazione cancelliamo tutti i lati paralleli_).
 
-Inoltre, ogni taglio di $G_i$ corrisponde ad un taglio di $G$ con la stessa dimensione. Infatti, se isolo in $G_i$ un taglio e vedo la sua dimensione, essa è uguale in $G$ perché tutti i lati che non ho contratto e che sono in $G_i$ li trovo anche in $G$.
+Inoltre, ogni taglio di $G_i$ corrisponde ad un taglio di $G$ con la stessa dimensione.
 
 In particolare, il grado minimo di $G_i$ è $gt.eq k^*$: infatti, se avessi un taglio più piccolo anche $G$ ce l'avrebbe ma questo è impossibile perché $X^*$ con $k^*$ è il taglio minimo.
 

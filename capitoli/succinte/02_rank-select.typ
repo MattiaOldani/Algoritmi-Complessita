@@ -46,9 +46,7 @@ La struttura di Jacobson è stata pensata negli anni $'80$ ed è una *struttura 
 
 Dato l'array $b$ lo divido in *super-blocchi* di lunghezza $(log(n))^2$. Ogni super-blocco poi lo dividiamo in *blocchi* di lunghezza $1/2 log(n)$.
 
-Ogni super-blocco $S_i$ memorizza quanti $1$ sono contenuti in esso. Invece, ogni blocco $B_(i j)$ memorizza quanti $1$ ci sono dall'inizio del super blocco $S_i$ fino a se stesso (_escluso_).
-
-Vediamo l'occupazione in memoria di queste strutture.
+Ogni super-blocco $S_i$ memorizza quanti $1$ sono contenuti dall'inizio del vettore fino a $S_i$ (_escluso_). Invece, ogni blocco $B_(i j)$ memorizza quanti $1$ ci sono dall'inizio del super blocco $S_i$ fino a se stesso (_escluso_). Vediamo l'occupazione in memoria di queste strutture.
 
 La *tabella dei super-blocchi* ha $frac(n, (log(n))^2)$ righe e contiene dei valori che sono al massimo lunghi (secondo me sono $(log(n)^2)$, e invece sono) $n$, che in bit sono $log(n)$. La grandezza di questa tabella è quindi $ frac(n, (log(n))^2) log(n) = frac(n, log(n)) = o(n) . $
 
@@ -90,6 +88,6 @@ Anche qui abbiamo due casistiche:
 - se $t_i^j gt.eq log(t_i^j) log(r_i) (log(log(n)))^2$ siamo ancora nel caso *sparso*. Come prima, memorizzo tutte le tabelle esplicitamente. Che occupazione abbiamo? Il numero di righe è $log(r_i) log(log(n))$, ognuna di queste tiene una quantità che è al massimo $t_i^j$ (_contiamo sempre da inizio blocco_), quindi in bit sono $log(t_i^j)$. L'occupazione totale è quindi $ log(r_i) log(log(n)) log(t_i^j) = frac(log(t_i^j) log(r_i) (log(log(n)))^2, log(log(n))) lt.eq frac(t_i^j, log(log(n))) ; $
 - se $t_i^j < log(t_i^j) log(r_i) (log(log(n)))^2$ usiamo il *four-russians trick*: per questa struttura prendiamo tutte le possibili tabelle di select. Osserviamo che $ log(t_i^j) &lt.eq_("DEF") log(r_i) lt.eq_("DEF") log((log(n) log(log(n)))^2) = \ &= 2 log(log(n) log(log(n))) = 2 log(log(n)) + 2 log(log(log(n))) lt.eq 4 log(log(n)) . $ Quindi $ t_i^j &< log(t_i^j) log(r_i) (log(log(n)))^2 \ &lt.eq 4 log(log(n)) 4 log(log(n)) (log(log(n)))^2 lt.eq 16 (log(log(n)))^4 . $
 
-Le tabelle del four-russians trick hanno $t_i^j$ righe, ognuna che contiene valori che sono al massimo $t_i^j$ (_come solito, partiamo dal blocco corrente a contare_), che in bit sono $log(t_i^j)$. Le tabelle sono $2^(t_i^j)$ quindi lo spazio occupato è $ 2^(t_i^j) t_i^j log(t_i^j) &lt.eq 2^(16 (log(log(n)))^4) 16 (log(log(n)))^4 log(16 (log(log(n)))^4) = \ &= "NON LO SO" = o(n) . $
+Le tabelle del four-russians trick hanno $t_i^j$ righe, ognuna che contiene valori che sono al massimo $t_i^j$ (_come solito, partiamo dal blocco corrente a contare_), che in bit sono $log(t_i^j)$. Le tabelle sono $2^(t_i^j)$ quindi lo spazio occupato è $ 2^(t_i^j) t_i^j log(t_i^j) lt.eq 2^(16 (log(log(n)))^4) 16 (log(log(n)))^4 log(16 (log(log(n)))^4) = o(n) . $
 
 Come prima, se sommiamo per ogni blocco $j$ abbiamo una somma *telescopica* che ci porta a $o(n)$.

@@ -181,13 +181,9 @@ Questo algoritmo è un esempio di *inapprossimabilità* o di *algoritmo tight*, 
 
   Come budget prendiamo esattamente $k$ numero di guardie.
 
-  Ho creato il mio input per Center Selection. Chiediamoci quanto vale $rho^* (S,k)$, ma questa assume solo valori in ${1,2}$ per come ho definito la distanza.
-
-  Quando ho distanza $1$? Devo scegliere $C$ con $abs(C) lt.eq k$ tale che $ forall s in S quad d(s,C) lt.eq 1 , $ ovvero tutti i punti sono a distanza $1$ dai loro centri. Ma allora $exists C^* subset.eq S$ tale che $ min_(c in C^*) space d(s,c) = 1 . $
-
-  Essendo a distanza $1$ possiamo dire che $exists C^* subset.eq S$ tale che $ forall s in S quad exists c in C^* bar.v s c in E . $
-
-  Questa è esattamente la definizione di Dominating Set, e il nostro Dominating Set è esattamente $C^*$.
+  Ho creato il mio input per Center Selection. Chiediamoci quanto vale $rho^* (S,k)$, ma questa assume solo valori in ${1,2}$ per come ho definito la distanza. Vediamo i due casi distinti:
+  - distanza $1$: tutte le distanze sono $1$, essendo questa il massimo tra tutte le distanze (_e non posso averla a zero_), ma allora vuol dire che tutti i vertici non scelti sono a distanza $1$ dai centri scelti, e quindi sono _"coperti"_ dalle guardie, quindi abbiamo un Dominating Set;
+  - distanza $2$: non abbiamo un Dominating Set, avendo distanza $2$ un vertice non viene coperto dai vertici che abbiamo selezionato.
 
   Noi abbiamo un algoritmo $alpha$-approssimante per Center Selection con $alpha < 2$, che fa $ (S,k) arrow.long.squiggly "ALGORITMO" arrow.long.squiggly rho^* (S,k) lt.eq underbracket(rho(S,k), "risultato") lt.eq alpha rho^* (S,k) . $
 

@@ -70,7 +70,7 @@ Vediamo la dimostrazione dei due lemmi che abbiamo usato nella dimostrazione.
 ]<primo-lemma-mis>
 
 #proof()[
-  Se $z in L$ allora $exists overline(w)$ che fa accettare con probabilità $1$. Prendiamo tutte le configurazioni accettanti $(R, {i_1^(z,R):b_1, dots, i_q^(z,R):b_q})$ consistenti con $overline(w)$. Noi abbiamo definito la relazione di inconsistenza, quindi devo scegliere l'unico nodo che ha le risposte uguali ai bit di $overline(w)$. Visto che abbiamo $2^(r(abs(z)))$ possibili $R$, l'insieme di tutti questi vertici ha cardinalità $gt.eq 2^(r(abs(z)))$. Inoltre, tutti questi elementi sono non collegati da archi, visto che sono consistenti, quindi è anche un Independent Set.
+  Se $z in L$ allora $exists overline(w)$ che fa accettare con probabilità $1$. Prendiamo tutte le configurazioni accettanti $(R, {i_1^(z,R):b_1, dots, i_q^(z,R):b_q})$ consistenti con $overline(w)$. Devo scegliere l'unico nodo che ha le risposte uguali ai bit di $overline(w)$. Visto che abbiamo $2^(r(abs(z)))$ possibili $R$, l'insieme di tutti questi vertici ha cardinalità $2^(r(abs(z)))$. Per semplicità, noi consideriamo che questa cardinalità sia almeno quel valore. Inoltre, tutti questi elementi sono non collegati da archi, visto che sono consistenti, quindi è anche un Independent Set.
 ]
 
 #lemma()[

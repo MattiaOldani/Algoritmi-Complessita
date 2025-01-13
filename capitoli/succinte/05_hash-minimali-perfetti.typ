@@ -103,7 +103,7 @@ La scelta di $m$ per un $I$-grafo dipende sempre da $n$ e da un fattore numerico
 
 Negli iper-grafi dobbiamo modificare la nozione di aciclicità con la nozione di *peelability*.
 
-Un iper-grafo $(V,E)$ ammette una *peeling sequence* se e solo se esiste un modo per ordinare gli archi $e_1, dots, e_n in E$ ed esiste una sequenza di vertici $x_1, dots, x_n in V$ tali che:
+Un iper-grafo $(V,E)$ ammette una *peeling sequence* se e solo se esiste una sequenza di coppie arco-vertice $(e_1, x_1), dots, (e_n, x_n)$ tale che:
 - $x_i in e_i$;
 - $forall j < i quad x_i in.not e_j$.
 
@@ -111,4 +111,10 @@ I valori $x_i$ sono detti *hinge*, ovvero i perni. Per trovare una peeling seque
 
 Anche in questo caso, abbiamo $ gamma n r $ bit di memoria occupati da $A$, ma in questo caso possiamo fare meglio.
 
-Non ho capito perché ma possiamo utilizzare solo $ n r + gamma n + o(n) $ bit, e nel caso $gamma = 1.23$ ci conviene se $r > 5$.
+Le equazioni diofantee da risolvere sono $n$, una per ogni lato, e gli hinge, che sono al massimo $n$, sono gli unici valori non zero che dobbiamo salvare dentro il vettore $A$. Al posto di salvare quest'ultimo per intero, salvo solo le entry non nulle e uso un vettore di bit sul quale uso rank e select per ricavare la posizione di queste entry.
+
+Le entry non nulle sono al massimo $n$ e contengono un valore che è di $r$ bit, quindi mi servono $n r$ bit. Il vettore di bit è lungo quanto il numero di vertici, quindi mi servono $gamma n$ bit. Infine, la struttura di rank e select occupa $o(n)$ bit. L'occupazione totale, in bit, è quindi $ n r + gamma n + o(n) . $
+
+Quando ci conviene questa soluzione? Chiediamoci per quali valori di $r$ vale $ gamma n r > n r + gamma n \ gamma n r - n r > gamma n \ n r (gamma - 1) > gamma n \ r > frac(gamma, gamma - 1) . $
+
+Considerando $gamma = 1.23$, otteniamo $ r > 5 . $

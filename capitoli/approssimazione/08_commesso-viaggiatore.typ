@@ -90,7 +90,9 @@ Noi faremo due modifiche al problema TSP per renderlo _"studiabile"_.
 ]
 
 #proof()[
-  Da chiedere, non l'ho capita.
+  Se abbiamo a disposizione un algoritmo che risolve il TSP su cricche e vogliamo risolvere il TSP generale, basta aggiungere dei lati di peso spropositato fino a creare una cricca, e passare la nuova istanza al nostro algoritmo.
+
+  Se abbiamo a disposizione un algoritmo che risolve il TSP generale e vogliamo risolvere il TSP su cricche, non dobbiamo modificare niente: il TSP generale lavora su qualsiasi grafo, quindi anche sulle cricche.
 ]
 
 La prima modifica che facciamo a TSP è questa: assumiamo che i nostri grafi siano completi, ovvero siano delle *cricche*. Chiamiamo $G = K_m$ la cricca di $m$ nodi.
@@ -200,7 +202,7 @@ L'algoritmo di Christofides è stato ideato verso la fine degli anni $'70$, ed �
 ]
 
 #theorem()[
-  Non esiste $alpha > 1$ tale che TSP sia $alpha$-approssimabile.
+  Non esiste $alpha > 1$ tale che il TSP generale sia $alpha$-approssimabile.
 ]
 
 #proof()[
