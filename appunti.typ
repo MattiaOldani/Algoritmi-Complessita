@@ -107,3 +107,10 @@
 #pagebreak()
 
 #include "capitoli/succinte/05_hash-minimali-perfetti.typ"
+
+// Citazioni
+
+#parte("Citazioni improbabili")
+#pagebreak()
+
+#include "capitoli/citazioni.typ"
