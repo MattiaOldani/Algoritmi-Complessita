@@ -69,8 +69,6 @@ Infatti, possiamo scrivere $ x = 2^(log_2(x)), $ quindi la lunghezza di $x$ è e
   Se un algoritmo è polinomiale nella lunghezza dell'input allora lo è anche nel valore dell'input, ma non vale il viceversa.
 ]
 
-Questo algoritmo è chiamato pseudo-polinomiale, ovvero un algoritmo che è lineare nel tempo ma esponenziale nella lunghezza dell'input (????).
-
 == PD: prima versione
 
 #align(center)[
