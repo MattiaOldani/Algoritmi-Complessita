@@ -59,7 +59,7 @@ Sia $T$ un albero. Indichiamo con:
 
   *Caso base*: albero binario banale $T$.
 
-  L'albero $T$ è formato dalla sola radice. Esso ha $ E(T) = 1 bar.v I(T) = 0 , $ ma allora $1 = 0 + 1$, quindi la relazione è verificata.
+  L'albero $T$ è formato dalla sola radice. Esso ha $ E(T) = 1 quad bar.v quad I(T) = 0 , $ ma allora $1 = 0 + 1$, quindi la relazione è verificata.
 
   *Passo ricorsivo*: albero binario $T$ formato dalla radice $R$ e due sotto-alberi $T_1$ (_sx_) e $T_2$ (_dx_).
 
@@ -88,7 +88,7 @@ Per ora ignoriamo i dati contenuti nei nodi, memorizziamo solo la struttura.
 
 Numeriamo i nodi a partire dall'alto andando verso il basso, partendo da sinistra e andando verso destra. In poche parole, numera facendo una ricerca in ampiezza. I numeri partono da $0$.
 
-Sia $n$ il numero di nodi interni. Usiamo un array binario di $2n+1$ elementi, che nella cella $i$ avrà $1$ se il nodo è interno, altrimenti conterrà $0$.
+Sia $n$ il numero di nodi interni. Usiamo un array binario $b$ di $2n+1$ elementi, che nella cella $i$ avrà $1$ se il nodo è interno, altrimenti conterrà $0$.
 
 Le *operazioni* che vogliamo saper fare su questo albero sono:
 - dato un nodo, voglio sapere i suoi figli;
@@ -96,13 +96,13 @@ Le *operazioni* che vogliamo saper fare su questo albero sono:
 
 Immaginiamo di avere un albero $T$ e consideriamo un sotto-albero $T'$ di $T$, scelto con la stessa radice di $T$. Dato un nodo $p$ di $T'$, voglio sapere quali sono i figli di questo nodo. Per come abbiamo numerato l'albero, basta contare i nodi alla sua destra fino al figlio sinistro (_figlio di sinistra_) e poi basta fare $+1$ (_figlio di destra_). Mi serve quindi il numero di nodi di $T'$, ma questo lo sappiamo, è due volte i nodi interni più uno, ovvero $2n' + 1$.
 
-Quanti sono questi nodi? Noi sappiamo il numero di interni, ovvero il rank, quindi $2 rank(p) + 1$, e questo è il figlio sinistro di $p$, l'altro è uguale ma ha $+2$.
+Quanti sono questi nodi? Noi sappiamo il numero di interni, ovvero il rank, quindi $2 rank(b,p) + 1$, e questo è il figlio sinistro di $p$, l'altro è uguale ma ha $+2$.
 
 Per sapere se è una foglia basta vedere se il vettore in posizione $p$ è 0.
 
-Per sapere il mio genitore, devo chiedermi chi è $p' bar.v p'$ genitore di $p$, qui mi serve la select. Sappiamo che questo $p'$ è tale che $2 rank(p') + 1 = p$ oppure $2 rank(p') + 2 = p$, quindi $ rank(p') = floor(p/2 - 1/2) . $
+Per sapere il mio genitore, devo chiedermi chi è $p' bar.v p'$ genitore di $p$, qui mi serve la select. Sappiamo che questo $p'$ è tale che $2 rank(b,p') + 1 = p$ oppure $2 rank(b,p') + 2 = p$, quindi $ rank(b,p') = floor(p/2 - 1/2) . $
 
-Applichiamo la select ad entrambi i membri e otteniamo $ p' = select(floor(p/2 - 1/2)) . $
+Applichiamo la select ad entrambi i membri e otteniamo $ p' = select(b,floor(p/2 - 1/2)) . $
 
 Per i *dati ancillari*, ovvero i dati dei nodi, usiamo un array parallelo al vettore dei nodi che tiene i dati, ma questo approccio non è molto succinto. Se i dati sono contenuti sono nei nodi interni, uso un vettore indicizzato di lunghezza uguale ai nodi interni al quale accedo tramite rank sul vettore che già possediamo.
 

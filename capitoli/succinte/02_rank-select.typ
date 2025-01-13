@@ -25,26 +25,24 @@
 Vogliamo implementare l'ADT che definisce il comportamento *Rank e Select*.
 
 Dato un array $b in 2^n$ di $n$ bit, abbiamo due operazioni:
-- la primitiva *rank* conta il numero di $1$ prima di una data posizione, ovvero $ rank(p) = abs({i bar.v i < p and b_i = 1}) ; $
-- la primitiva *select* dice in che posizione è presente il $k$-esimo $1$ (_a partire da $0$_), ovvero $ select(k) = max{p bar.v rank(p) lt.eq k} . $
+- la primitiva *rank* conta il numero di $1$ prima di una data posizione, ovvero $ rank(b,p) = abs({i bar.v i < p and b_i = 1}) ; $
+- la primitiva *select* dice in che posizione è presente il $k$-esimo $1$ (_a partire da $0$_), ovvero $ select(b,k) = max{p bar.v rank(b,p) lt.eq k} . $
 
-Valgono due *proprietà*: $ rank(select(i)) = i \ select(rank(i)) gt.eq i and select(rank(i)) = i arrow.long.double.l.r b_i = 1 $
+Valgono due *proprietà*: $ rank(b,select(b,i)) = i \ select(b,rank(b,i)) gt.eq i and select(b,rank(b,i)) = i arrow.long.double.l.r b_i = 1 $
 
 Le strutture che considereremo sono dette *statiche*: una volta costruito l'oggetto, esso non viene più modificato dalle primitive, quindi è buona cosa costruire in maniera intelligente queste strutture.
 
-Le strutture di controllo (_tabelle_) che usiamo sono detti *indici*. Il tempo di costruzione di questi indici non lo considereremo mai.
+Le strutture di controllo (_tabelle_) che usiamo sono dette *indici*. Il tempo di costruzione di questi indici non lo considereremo mai.
 
 Vediamo due implementazioni naive di questa ADT:
 - se non costruisco niente lo spazio utilizzato dalla struttura è $0$ ma il tempo è lineare perché ogni volta devo calcolarmi i valori di rank e select scorrendo l'array;
 - se costruisco le tabelle di rank e select per intero occupiamo $2 n log_2(n)$ bit di spazio ma abbiamo tempo di accesso $O(1)$ per avere le risposte.
 
-Per salvare un array di $n$ bit ci servono $ gt.eq log_2(D_n) = log_2(2^n) = n $ bit. Abbiamo $2^n$ perché sono bit e abbiamo $n$ posizioni.
+Per salvare un array di $n$ bit ci servono $ gt.eq log_2(D_n) = log_2(2^n) = n "bit". $
 
 == Struttura di Jacobson per Rank
 
-La struttura di Jacobson è stata pensata negli anni $'80$. DA QUA GAY
-
-La struttura di Jacobson per rank è una *struttura multi-livello*.
+La struttura di Jacobson è stata pensata negli anni $'80$ ed è una *struttura multi-livello*.
 
 Dato l'array $b$ lo divido in *super-blocchi* di lunghezza $(log(n))^2$. Ogni super-blocco poi lo dividiamo in *blocchi* di lunghezza $1/2 log(n)$.
 
@@ -66,16 +64,6 @@ La struttura di Jacobson è quindi *succinta*.
 
 == Struttura di Clarke per Select
 
-#align(center)[
-  #block(
-    fill: rgb("#9FFFFF"),
-    inset: 8pt,
-    radius: 4pt,
-
-    [*Eh no Gemini però. Scusate è partito ancora Gemini (_cit. Boldi_)*],
-  )
-]
-
 La *struttura di Clarke per Select* è stata ideata molto dopo rispetto alla struttura di Jacobson.
 
 Come funziona questa struttura? È ancora una *struttura multi-livello*, che salverà le entry della select _"ogni tanto"_, ogni tot multipli.
@@ -96,11 +84,11 @@ In entrambi i casi analizzati usiamo al massimo, nel secondo livello, un numero 
 
 === Terzo livello
 
-Nel caso denso mi mancano comunque degli $1$ da indicizzare, che sono quelli nelle posizioni non multiple. Serve un *terzo livello*. Nel secondo livello ho memorizzato le posizioni $s_i^j$ del blocco che inizia in $i$. Come prima, vediamo la differenza $t_i^j = s_i^(j+1) - s_i^j$. Ricordiamoci che siamo nel caso denso, quindi vale $r_i < (log(n) log(log(n)))^2$. Vale quindi $ t_i^j gt.eq log(r_i) log(log(n)) . $
+Nel caso denso mi mancano comunque degli $1$ da indicizzare, che sono quelli nelle posizioni non multiple. Serve un *terzo livello*. Nel secondo livello ho memorizzato le posizioni $s_i^j$ del blocco che inizia in $i$. Come prima, vediamo la differenza $t_i^j = s_i^(j+1) - s_i^j$. Ricordiamoci che siamo nel caso denso, quindi vale $r_i < (log(n) log(log(n)))^2$. Vale inoltre $ t_i^j gt.eq log(r_i) log(log(n)) . $
 
 Anche qui abbiamo due casistiche:
 - se $t_i^j gt.eq log(t_i^j) log(r_i) (log(log(n)))^2$ siamo ancora nel caso *sparso*. Come prima, memorizzo tutte le tabelle esplicitamente. Che occupazione abbiamo? Il numero di righe è $log(r_i) log(log(n))$, ognuna di queste tiene una quantità che è al massimo $t_i^j$ (_contiamo sempre da inizio blocco_), quindi in bit sono $log(t_i^j)$. L'occupazione totale è quindi $ log(r_i) log(log(n)) log(t_i^j) = frac(log(t_i^j) log(r_i) (log(log(n)))^2, log(log(n))) lt.eq frac(t_i^j, log(log(n))) ; $
-- se $t_i^j < log(t_i^j) log(r_i) (log(log(n)))^2$ usiamo il *four-russians trick*: per questa struttura prendiamo tutte le possibili tabelle di select. Osserviamo che $ log(t_i^j) &lt.eq_("DEF") log(r_i) lt.eq_("DEF") log(log(n) log(log(n))^2) = \ &= 2 log(log(n) log(log(n))) = 2 log(log(n)) + 2 log(log(log(n))) lt.eq 4 log(log(n)) . $ Quindi $ t_i^j &< log(t_i^j) log(r_i) (log(log(n)))^2 \ &lt.eq 4 log(log(n)) 4 log(log(n)) (log(log(n)))^2 lt.eq 16 (log(log(n)))^4 . $
+- se $t_i^j < log(t_i^j) log(r_i) (log(log(n)))^2$ usiamo il *four-russians trick*: per questa struttura prendiamo tutte le possibili tabelle di select. Osserviamo che $ log(t_i^j) &lt.eq_("DEF") log(r_i) lt.eq_("DEF") log((log(n) log(log(n)))^2) = \ &= 2 log(log(n) log(log(n))) = 2 log(log(n)) + 2 log(log(log(n))) lt.eq 4 log(log(n)) . $ Quindi $ t_i^j &< log(t_i^j) log(r_i) (log(log(n)))^2 \ &lt.eq 4 log(log(n)) 4 log(log(n)) (log(log(n)))^2 lt.eq 16 (log(log(n)))^4 . $
 
 Le tabelle del four-russians trick hanno $t_i^j$ righe, ognuna che contiene valori che sono al massimo $t_i^j$ (_come solito, partiamo dal blocco corrente a contare_), che in bit sono $log(t_i^j)$. Le tabelle sono $2^(t_i^j)$ quindi lo spazio occupato è $ 2^(t_i^j) t_i^j log(t_i^j) &lt.eq 2^(16 (log(log(n)))^4) 16 (log(log(n)))^4 log(16 (log(log(n)))^4) = \ &= "NON LO SO" = o(n) . $
 

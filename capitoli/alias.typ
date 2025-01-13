@@ -91,18 +91,18 @@
   $pcprqop[#r,#q]$
 }
 
-#let rank(a) = {
+#let rank(array, index) = {
   let rankop = math.class(
     "unary",
     "rank",
   )
-  $rankop(#a)$
+  $rankop_(#array) (#index)$
 }
 
-#let select(a) = {
+#let select(array, index) = {
   let selectop = math.class(
     "unary",
     "select",
   )
-  $selectop(#a)$
+  $selectop_(#array) (#index)$
 }

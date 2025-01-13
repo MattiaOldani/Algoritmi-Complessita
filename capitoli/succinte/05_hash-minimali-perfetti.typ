@@ -22,29 +22,9 @@
 
 = Hash minimali perfetti
 
-#align(center)[
-  #block(
-    fill: rgb("#9FFFFF"),
-    inset: 8pt,
-    radius: 4pt,
-
-    [*Siamo al finale (_cit. Boldi_)*],
-  )
-]
-
-Le funzioni hash sono molto rudimentali: partono da qualsiasi universo $U$ e ci tornano, a prescindere da $U$, un valore nell'insieme ${0,dots,m-1}$. In poche parole sono funzioni nella forma $ h : U arrow.long m . $
+Le funzioni hash sono funzioni molto rudimentali: partono da qualsiasi universo $U$ e ci ritornano, a prescindere da $U$, un valore nell'insieme ${0,dots,m-1}$. In poche parole sono funzioni nella forma $ h : U arrow.long m . $
 
 Il valore $m$ indica il numero di *bucket*, ovvero il numero di contenitori che usa la funzione hash per distribuire i valori di $U$. Perché usiamo i bucket? Perché di solito $U gt.double m$ e quindi esistono sicuramente delle *collisioni*, ovvero dei valori che vengono mappati nello stesso bucket.
-
-#align(center)[
-  #block(
-    fill: rgb("#9FFFFF"),
-    inset: 8pt,
-    radius: 4pt,
-
-    [*Le funzioni hash sono come le miscele di spezie (_cit. Boldi_)*],
-  )
-]
 
 Imponiamo dei requisiti alle funzioni hash:
 + $h$ si calcoli in tempo costante;
@@ -58,7 +38,7 @@ Costruiamo una struttura dati che utilizza una funzione hash $h$ scelta uniforme
 + l'insieme di tutte le funzioni hash è enorme, dove lo mettiamo?
 + se scelgo a caso, potrei non avere una funzione che lavora in tempo o in spazio costante.
 
-Una cosa che si fa spesso è associare ad ogni carattere della stringa un peso, e poi calcolare la somma pesata modulo la grandezza massima. Questo ci permette di avere infinite funzioni hash, modificando solamente il vettore dei pesi.
+Una cosa che si fa spesso è associare ad ogni carattere della stringa un *peso*, e poi calcolare la somma pesata modulo la grandezza massima. Questo ci permette di avere infinite funzioni hash, modificando solamente il vettore dei pesi.
 
 Un'altra soluzione è la *full randomness assumption*: assumiamo che $h$ sia scelta veramente a caso, e che non ci siano questi problemi.
 
@@ -74,7 +54,7 @@ La probabilità di avere un hash perfetto, scegliendo a caso, è molto bassa, e 
 
 == Tecnica MWHC su grafi
 
-La *tecnica MWHC* (_Majewski, Worwald, Havas (manca s verso destra) e Czech_) è stato presentato in un articolo del 1980 con l'obiettivo di risolvere un problema legato agli *hash minimali perfetti ordinati* (_Ordered Preserving Perfect Minimal Hash_), ovvero hash che mappano in un ordine deciso.
+La *tecnica MWHC* (_Majewski, Worwald, Havaś e Czech_) è stato presentato in un articolo del $1980$ con l'obiettivo di risolvere un problema legato agli *hash minimali perfetti ordinati* (_OPPMH, Ordered Preserving Perfect Minimal Hash_), ovvero hash che mappano in un ordine deciso.
 
 Sia $U$ l'insieme universo e sia $X subset.eq U$ con $abs(X) = n$. Vogliamo una funzione che associ ad ogni $x_i in X$ un valore di $r$ bit. Fissiamo anche $m gt.eq n$. Scegliamo a caso due funzioni $ h_1,h_2 : U arrow.long m $ usando il trucchetto dei pesi.
 
@@ -84,13 +64,13 @@ Costruiamo un grafo. Esso ha:
 
 Cosa non vogliamo che succeda:
 + $h_1(x) = h_2(x)$, ovvero ho un *cappio*;
-+ considerando due input $x,y$ tali che $x eq.not y$ otteniamo lo stesso arco, ovvero nel grafo abbiamo un multi-arco;
++ considerando $x,y$ tali che $x eq.not y$ otteniamo lo stesso arco, ovvero abbiamo un multigrafo;
 + il grafo è ciclico.
 
 Se succede anche solo una di queste cose buttiamo via le due funzioni hash e ne scegliamo altre due (_ovvero cambiamo i pesi_). Ma le troveremo prima o poi due funzioni $h_1$ e $h_2$ che ci vanno bene?
 
 #theorem()[
-  Se $m > 2.09n$ le funzioni hash $h_1$ e $h_2$ hanno le proprietà desiderate quasi sempre e il numero di tentativi attesi è $approx 2$.
+  Se $m > 2.09n$ le funzioni hash $h_1$ e $h_2$ hanno quasi sempre le proprietà desiderate e il numero di tentativi attesi è $approx 2$.
 ]
 
 Vogliamo assegnare ad ogni $x in X$ un valore $f(x) in 2^r$ di $r$ bit. Etichettiamo l'arco tra due nodi con il valore $f(x)$, dove $x$ è il valore di $X$ che ha generato quell'arco.
@@ -100,8 +80,6 @@ Andiamo a scrivere $G$ come un sistema di equazioni del tipo $ (A[h_1(x)] + A[h_
 La soluzione di questo sistema lo andiamo a salvare in un vettore chiamato $A$.
 
 Grazie a questo posso costruire la funzione hash richiesta: infatti, non so come ma funziona, se richiediamo $f(x)$ con $x in X$, basta calcolare la somma delle posizioni di $A$ trovate usando $h_1$ e $h_2$.
-
-*ESEMPIO*
 
 Che occupazione in spazio abbiamo?
 
