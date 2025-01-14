@@ -48,7 +48,7 @@ Dato l'array $b$ lo divido in *super-blocchi* di lunghezza $(log(n))^2$. Ogni su
 
 Ogni super-blocco $S_i$ memorizza quanti $1$ sono contenuti dall'inizio del vettore fino a $S_i$ (_escluso_). Invece, ogni blocco $B_(i j)$ memorizza quanti $1$ ci sono dall'inizio del super blocco $S_i$ fino a se stesso (_escluso_). Vediamo l'occupazione in memoria di queste strutture.
 
-La *tabella dei super-blocchi* ha $frac(n, (log(n))^2)$ righe e contiene dei valori che sono al massimo lunghi (secondo me sono $(log(n)^2)$, e invece sono) $n$, che in bit sono $log(n)$. La grandezza di questa tabella è quindi $ frac(n, (log(n))^2) log(n) = frac(n, log(n)) = o(n) . $
+La *tabella dei super-blocchi* ha $frac(n, (log(n))^2)$ righe e contiene dei valori che sono al massimo lunghi $n$, che in bit sono $log(n)$. La grandezza di questa tabella è quindi $ frac(n, (log(n))^2) log(n) = frac(n, log(n)) = o(n) . $
 
 La *tabella dei blocchi* ha $frac(n, 1/2 log(n))$ righe e contiene dei valori che sono al massimo lunghi $(log(n))^2$, che in bit sono $log(log(n)^2)$. La grandezza di questa tabella è quindi $ frac(n, 1/2 log(n)) log(log(n)^2) = frac(4 n log(log(n)), log(n)) = o(n) . $
 

@@ -2,6 +2,8 @@
 
 #import "../alias.typ": *
 
+#import "@preview/fletcher:0.5.4": diagram, node, edge
+
 #import "@preview/lovelace:0.3.0": pseudocode-list
 
 #let settings = (
@@ -28,7 +30,25 @@ La *teoria dei grafi* nasce con Eulero a fine $'700$ con il *problema dei ponti 
 
 #v(12pt)
 
-#figure(image("assets/08_ponti.svg", width: 30%))
+#align(center)[
+  #diagram(
+    node-stroke: .1em,
+    spacing: 4em,
+
+    node((1, 0), `sponda1`, radius: 2em, fill: green.lighten(50%)),
+    node((0, 1), `sponda2`, radius: 2em, fill: green.lighten(50%)),
+    node((2, 1), `sponda3`, radius: 2em, fill: green.lighten(50%)),
+    node((1, 1), `isola`, radius: 2em, fill: blue.lighten(50%)),
+
+    edge((1, 0), (0, 1), ``, "-|"),
+    edge((1, 0), (1, 1), ``, "-|"),
+    edge((1, 0), (2, 1), ``, "-|"),
+    edge((0, 1), (1, 1), ``, "-|", bend: -20deg),
+    edge((1, 1), (0, 1), ``, "-|", bend: -20deg),
+    edge((1, 1), (2, 1), ``, "-|", bend: -20deg),
+    edge((2, 1), (1, 1), ``, "-|", bend: -20deg),
+  )
+]
 
 #v(12pt)
 
